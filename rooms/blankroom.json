@@ -1,14 +1,18 @@
 {
-    "Name": "",
-	"ID": "",
+    "Names": [
+        ""
+    ],
+    "ID": "",
     "Description": "",
     "Parent": "",
-    
+
     "Has_Ceiling": false,
     "Has_Floor": true,
     "Is_Outside": true,
-    
-    "Adjacent": "",
+
+    "Adjacent": [
+        ""
+    ],
     "North": "",
     "North_East": "",
     "East": "",
@@ -19,11 +23,11 @@
     "North_West": "",
     "Up": "",
     "Down": "",
-    
+
     "Items": [
-	""
-	],	
+        ""
+    ],
     "Widgets": [
-	""
-	]
+        ""
+    ]
 }

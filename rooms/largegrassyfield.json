@@ -1,0 +1,31 @@
+{
+    "Names": [
+        "Grassy Field"
+    ],
+    "ID": "largegrassyfield",
+    "Description": "You arrive at a sprawling field covered in grass, rolling hills, and other springtime-pleasentries including various `wildflowers`.  The scent of the ocean and flowers combines together and creates a magnificent aroma.  The Beach extends to the `Northwest`, `West` and `Southwest`",
+    "Parent": "",
+
+    "Has_Ceiling": false,
+    "Has_Floor": true,
+    "Is_Outside": true,
+
+    "Adjacent": [
+        ""
+    ],
+    "North": "",
+    "North_East": "",
+    "East": "",
+    "South_East": "",
+    "South": "",
+    "South_West": "beach3",
+    "West": "beach2",
+    "North_West": "beach1",
+
+    "Items": [
+        "flower"
+    ],
+    "Widgets": [
+        "sweet_aroma"
+    ]
+}

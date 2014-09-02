@@ -1,0 +1,28 @@
+{
+    "Names" : [
+        "Beach"
+    ],
+    "ID" : "beach4",
+    "Description" : "You follow the beach, and the inland fields begin to jut out of the ground in a magestic shoreline.  As you walk, the sand becomes littered with pebbles, and small rocks.  The sharp rocks stop you from traveling any further `South`.  The beach extends to the `North`.",
+    "Parent" : "",
+
+    "Has_Ceiling" : false,
+    "Has_Floor" : true,
+    "Is_Outside" : true,
+
+    "Adjacent" : [
+        "beach3"
+    ],
+    "North" : "beach3",
+
+    "Items" : [
+        "sand",
+        "water",
+        "small_rock"
+    ],
+    "Widgets" : [
+        "waves",
+        "ocean",
+        "sharp_rocks"
+    ]
+}
