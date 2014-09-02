@@ -1,6 +1,8 @@
 {
     "Names": [
-        "Beach"
+        "Northern Beach",
+        "Northern Shore",
+        "Northern Shoreline"
     ],
     "ID": "beach2",
     "Description": "The shoreline continues for quite a distance, and sand begins to wear at your feet.  You can see the bay's sheer cliffs in the distance to the `North`.  The beach continues to the `North` and `South`, and there is a large grassy field to the `East`",
