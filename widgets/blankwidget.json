@@ -1,0 +1,8 @@
+{
+    "name": "blankwidget",
+    "description": "The blankwidget is not very entertaining to look at",
+    "actions": [
+        "frob",
+        "use"
+    ]
+}
