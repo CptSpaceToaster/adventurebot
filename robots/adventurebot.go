@@ -10,7 +10,9 @@ import (
 )
 
 var Players = make(map[string]Player)
+var Items = make(map[string]Item)
 var Rooms = make(map[string]Room)
+var Widgets = make(map[string]Widget)
 
 type AdventureBot struct {
 }
@@ -69,6 +71,11 @@ func (p AdventureBot) Run(command *SlashCommand) (slashCommandImmediateReturn st
 }
 
 func (p AdventureBot) DeferredAction(command *SlashCommand) {
+    //if the command isn't issued from adventure, then ignore it
+    if (command.Channel_Name != "adventure") {
+        return
+    }
+
     if _,exist := Players[command.User_Name]; !exist {
         RegisterPlayer(command.User_Name)
     }
@@ -124,5 +131,6 @@ func StringInSlice(a string, list []string) bool  {
 }
 
 func (p AdventureBot) Description() (description string) {
+    //Ehhh... todo?
 	return "Adventure bot!\n\tUsage: /adventure\n\tExpected Response: @user: Pong!"
 }
