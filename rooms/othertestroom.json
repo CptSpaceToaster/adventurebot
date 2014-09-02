@@ -1,7 +1,0 @@
-{
-    "name": "othertestroom",
-    "description": "this room is a different test room\ndoes @karl know what he's doing?",
-    "adjacent": [
-        "testroom"
-    ]
-}
