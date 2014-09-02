@@ -4,7 +4,7 @@ type Player struct {
     Name            string          `json:"name"`
     Location        string          `json:"location"`
     Last_Room       string          `json:"last_room"`
-    Items           []string        `json:"inventory"`
+    Inventory       []string        `json:"inventory"`
 }
 
 type Room struct {
