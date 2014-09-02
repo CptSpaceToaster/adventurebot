@@ -14,7 +14,7 @@ type Room struct {
     
     Has_Ceiling     bool            `json:"has_ceiling"`
     Has_Floor       bool            `json:"has_floor"`
-	Is_Outside		bool			`json:"is_outside"`
+    Is_Outside      bool            `json:"is_outside"`
     
     Adjacent        []string        `json:"adjacent"`
     North           string          `json:"north,omitempty"`
@@ -24,7 +24,7 @@ type Room struct {
     South           string          `json:"south,omitempty"`
     South_West      string          `json:"south_west,omitempty"`
     West            string          `json:"west,omitempty"`
-	North_West      string          `json:"north_west,omitempty"`
+    North_West      string          `json:"north_west,omitempty"`
     Up              string          `json:"up,omitempty"`
     Down            string          `json:"down,omitempty"`
     
