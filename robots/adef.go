@@ -9,6 +9,7 @@ type Player struct {
 
 type Room struct {
     Name            string          `json:"name"`
+    ID              string          `json:"id"`
     Description     string          `json:"description"`
     Parent          string          `json:"parent,omitempty"`
     
