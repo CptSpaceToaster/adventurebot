@@ -12,7 +12,8 @@
 
     "Adjacent": [
         "beach2",
-        "shipwreck_cabin"
+        "shipwreck_cabin",
+        "largegrassyfield"
     ],
     "East": "largegrassyfield",
     "South_East": "largegrassyfield",
