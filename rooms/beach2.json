@@ -12,7 +12,8 @@
 
     "Adjacent": [
         "beach1",
-        "beach3"
+        "beach3",
+        "largegrassyfield"
     ],
     "North": "beach1",
     "East": "largegrassyfield",
