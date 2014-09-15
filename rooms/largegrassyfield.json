@@ -17,7 +17,7 @@
     "North_East": "",
     "East": "",
     "South_East": "",
-    "South": "",
+    "South": "drawbridge",
     "South_West": "beach3",
     "West": "beach2",
     "North_West": "beach1",
