@@ -1,0 +1,34 @@
+{
+    "Name": "princess's room",
+	"ID": "princess's room",
+    "Description": "You are in the princess's room in the tower of the castle.",
+    "Parent": "",
+    
+    "Has_Ceiling": true,
+    "Has_Floor": true,
+    "Is_Outside": false,
+    
+    "Adjacent":[
+        "tower foyer",
+        "observatory",
+        "dragon's roost",
+        "green house"
+    ],
+    "North": "",
+    "North_East": "",
+    "East": "",
+    "South_East": "",
+    "South": "",
+    "South_West": "",
+    "West": "",
+    "North_West": "",
+    "Up": "",
+    "Down": "",
+    
+    "Items": [
+	""
+	],	
+    "Widgets": [
+	""
+	]
+}
