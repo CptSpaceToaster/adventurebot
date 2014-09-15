@@ -1,0 +1,35 @@
+{
+    "Name": "torture chamber",
+    "ID": "torture chamber",
+    "Description": "You are in the torture chamber of the dungeon in the castle.",
+    "Parent": "",
+    
+    "Has_Ceiling": true,
+    "Has_Floor": true,
+    "Is_Outside": false,
+    
+    "Adjacent":[
+        "dungeon cell",
+        "torturer's quarters",
+        "necromancy lab",
+        "abyss",
+        "dungeon landing"
+    ],
+    "North": "",
+    "North_East": "",
+    "East": "",
+    "South_East": "",
+    "South": "",
+    "South_West": "",
+    "West": "",
+    "North_West": "",
+    "Up": "",
+    "Down": "",
+    
+    "Items": [
+    ""
+    ],  
+    "Widgets": [
+    ""
+    ]
+}

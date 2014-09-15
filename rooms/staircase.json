@@ -1,0 +1,36 @@
+{
+    "Name": "staircase",
+	"ID": "staircase",
+    "Description": "You are on the grand staircase of the castle.",
+    "Parent": "",
+    
+    "Has_Ceiling": true,
+    "Has_Floor": true,
+    "Is_Outside": false,
+    
+    "Adjacent":[
+        "main floor foyer"
+        "second floor foyer"
+        "third floor foyer"
+        "tower foyer"
+        "basement foyer"
+        "dungeon landing"
+    ],
+    "North": "",
+    "North_East": "",
+    "East": "",
+    "South_East": "",
+    "South": "",
+    "South_West": "",
+    "West": "",
+    "North_West": "",
+    "Up": "",
+    "Down": "",
+    
+    "Items": [
+	""
+	],	
+    "Widgets": [
+	""
+	]
+}

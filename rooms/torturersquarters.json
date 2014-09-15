@@ -1,0 +1,35 @@
+{
+    "Name": "torturer's quarters",
+    "ID": "torturer's quarters",
+    "Description": "You are in the torturer's quarters of the dungeon in the castle.",
+    "Parent": "",
+    
+    "Has_Ceiling": true,
+    "Has_Floor": true,
+    "Is_Outside": false,
+    
+    "Adjacent":[
+        "dungeon cell",
+        "torture chamber",
+        "necromancy lab",
+        "abyss",
+        "dungeon landing"
+    ],
+    "North": "",
+    "North_East": "",
+    "East": "",
+    "South_East": "",
+    "South": "",
+    "South_West": "",
+    "West": "",
+    "North_West": "",
+    "Up": "",
+    "Down": "",
+    
+    "Items": [
+    ""
+    ],  
+    "Widgets": [
+    ""
+    ]
+}

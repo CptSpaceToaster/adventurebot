@@ -1,0 +1,35 @@
+{
+    "Name": "abyss",
+    "ID": "abyss",
+    "Description": "You are by an abyss.",
+    "Parent": "",
+    
+    "Has_Ceiling": true,
+    "Has_Floor": true,
+    "Is_Outside": false,
+    
+    "Adjacent":[
+        "dungeon cell",
+        "torturer's quarters",
+        "torture chamber",
+        "necromancy lab",
+        "dungeon landing"
+    ],
+    "North": "",
+    "North_East": "",
+    "East": "",
+    "South_East": "",
+    "South": "",
+    "South_West": "",
+    "West": "",
+    "North_West": "",
+    "Up": "",
+    "Down": "",
+    
+    "Items": [
+    ""
+    ],  
+    "Widgets": [
+    ""
+    ]
+}

@@ -1,0 +1,36 @@
+{
+    "Name": "dungeon landing",
+	"ID": "dungeon landing",
+    "Description": "You are on the landing of the dungeon in the castle.",
+    "Parent": "",
+    
+    "Has_Ceiling": true,
+    "Has_Floor": true,
+    "Is_Outside": false,
+    
+    "Adjacent":[
+        "dungeon cell",
+        "torturer's quarters",
+        "torture chamber",
+        "necromancy lab",
+        "abyss",
+        "staircase"
+    ],
+    "North": "",
+    "North_East": "",
+    "East": "",
+    "South_East": "",
+    "South": "",
+    "South_West": "",
+    "West": "",
+    "North_West": "",
+    "Up": "",
+    "Down": "",
+    
+    "Items": [
+	""
+	],	
+    "Widgets": [
+	""
+	]
+}

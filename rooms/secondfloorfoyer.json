@@ -1,0 +1,36 @@
+{
+    "Name": "second floor foyer",
+	"ID": "second floor foyer",
+    "Description": "You are in the foyer of the second floor of the castle.",
+    "Parent": "",
+    
+    "Has_Ceiling": true,
+    "Has_Floor": true,
+    "Is_Outside": false,
+    
+    "Adjacent":[
+        "throne room",
+        "staircase",
+        "council of elders",
+        "war room",
+        "oratory",
+        "solarium"
+    ],
+    "North": "",
+    "North_East": "",
+    "East": "",
+    "South_East": "",
+    "South": "",
+    "South_West": "",
+    "West": "",
+    "North_West": "",
+    "Up": "",
+    "Down": "",
+    
+    "Items": [
+	""
+	],	
+    "Widgets": [
+	""
+	]
+}

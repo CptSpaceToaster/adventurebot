@@ -1,0 +1,35 @@
+{
+    "Name": "gallery",
+	"ID": "gallery",
+    "Description": "You are in the art gallery of the castle.",
+    "Parent": "",
+    
+    "Has_Ceiling": true,
+    "Has_Floor": true,
+    "Is_Outside": false,
+    
+    "Adjacent":[
+        "main floor foyer",
+        "library",
+        "kitchen",
+        "banquet hall",
+        "ballroom"
+    ],
+    "North": "",
+    "North_East": "",
+    "East": "",
+    "South_East": "",
+    "South": "",
+    "South_West": "",
+    "West": "",
+    "North_West": "",
+    "Up": "",
+    "Down": "",
+    
+    "Items": [
+	""
+	],	
+    "Widgets": [
+	""
+	]
+}

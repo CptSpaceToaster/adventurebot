@@ -1,0 +1,37 @@
+{
+    "Name": "third floor foyer",
+	"ID": "third floor foyer",
+    "Description": "You are in the foyer on the third floor of the castle.",
+    "Parent": "",
+    
+    "Has_Ceiling": true,
+    "Has_Floor": true,
+    "Is_Outside": false,
+    
+    "Adjacent":[
+        "royal bedroom",
+        "staircase",
+        "royal bathroom",
+        "prince's room",
+        "general's quarters",
+        "magician's quarters",
+        "magistrate's quarters"
+    ],
+    "North": "",
+    "North_East": "",
+    "East": "",
+    "South_East": "",
+    "South": "",
+    "South_West": "",
+    "West": "",
+    "North_West": "",
+    "Up": "",
+    "Down": "",
+    
+    "Items": [
+	""
+	],	
+    "Widgets": [
+	""
+	]
+}

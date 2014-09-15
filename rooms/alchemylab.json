@@ -1,0 +1,35 @@
+{
+    "Name": "alchemy lab",
+	"ID": "alchemy lab",
+    "Description": "You are in the alchemy lab of the castle.",
+    "Parent": "",
+    
+    "Has_Ceiling": true,
+    "Has_Floor": true,
+    "Is_Outside": false,
+    
+    "Adjacent":[
+        "basement foyer",
+        "servant's quarters",
+        "guard's quarters",
+        "armoury",
+        "panty"
+    ],
+    "North": "",
+    "North_East": "",
+    "East": "",
+    "South_East": "",
+    "South": "",
+    "South_West": "",
+    "West": "",
+    "North_West": "",
+    "Up": "",
+    "Down": "",
+    
+    "Items": [
+	""
+	],	
+    "Widgets": [
+	""
+	]
+}

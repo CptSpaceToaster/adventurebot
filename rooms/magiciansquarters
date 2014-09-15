@@ -1,0 +1,36 @@
+{
+    "Name": "magician's quarters",
+    "ID": "magician's quarters",
+    "Description": "You are in the magician's quarters in the castle.",
+    "Parent": "",
+    
+    "Has_Ceiling": true,
+    "Has_Floor": true,
+    "Is_Outside": false,
+    
+    "Adjacent":[
+        "third floor foyer",
+        "royal bathroom",
+        "royal bedroom",
+        "prince's room",
+        "general's quarters",
+        "magistrate's quarters"
+    ],
+    "North": "",
+    "North_East": "",
+    "East": "",
+    "South_East": "",
+    "South": "",
+    "South_West": "",
+    "West": "",
+    "North_West": "",
+    "Up": "",
+    "Down": "",
+    
+    "Items": [
+    ""
+    ],  
+    "Widgets": [
+    ""
+    ]
+}

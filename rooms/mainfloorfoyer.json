@@ -1,0 +1,37 @@
+{
+    "Name": "main floor foyer",
+	"ID": "main floor foyer",
+    "Description": "You are in the foyer on the main floor of the castle.",
+    "Parent": "",
+    
+    "Has_Ceiling": true,
+    "Has_Floor": true,
+    "Is_Outside": false,
+    
+    "Adjacent":[
+		"kitchen",
+		"banquet hall",
+		"gallery",
+		"library",
+		"ballroom",
+		"staircase",
+		"drawbridge"
+    ],
+    "North": "",
+    "North_East": "",
+    "East": "",
+    "South_East": "",
+    "South": "",
+    "South_West": "",
+    "West": "",
+    "North_West": "",
+    "Up": "",
+    "Down": "",
+    
+    "Items": [
+	""
+	],	
+    "Widgets": [
+	""
+	]
+}

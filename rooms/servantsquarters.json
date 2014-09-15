@@ -1,0 +1,35 @@
+{
+    "Name": "servant's quarters",
+	"ID": "servant's quarters",
+    "Description": "You are in the servant's quarters of the castle.",
+    "Parent": "",
+    
+    "Has_Ceiling": true,
+    "Has_Floor": true,
+    "Is_Outside": false,
+    
+    "Adjacent":[
+        "basement foyer",
+        "armoury",
+        "guard's quarters",
+        "alchemy lab",
+        "panty"
+    ],
+    "North": "",
+    "North_East": "",
+    "East": "",
+    "South_East": "",
+    "South": "",
+    "South_West": "",
+    "West": "",
+    "North_West": "",
+    "Up": "",
+    "Down": "",
+    
+    "Items": [
+	""
+	],	
+    "Widgets": [
+	""
+	]
+}
