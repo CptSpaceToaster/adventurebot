@@ -1,7 +1,7 @@
 {
-    "Name": "servant's quarters",
-	"ID": "servant's quarters",
-    "Description": "You are in the servant's quarters of the castle.",
+    "Name": "princess room",
+	"ID": "princessroom",
+    "Description": "You are in the princess room in the tower of the castle.",
     "Parent": "",
     
     "Has_Ceiling": true,
@@ -9,11 +9,10 @@
     "Is_Outside": false,
     
     "Adjacent":[
-        "basement foyer",
-        "armoury",
-        "guard's quarters",
-        "alchemy lab",
-        "panty"
+        "towerfoyer",
+        "observatory",
+        "dragonroost",
+        "greenhouse"
     ],
     "North": "",
     "North_East": "",

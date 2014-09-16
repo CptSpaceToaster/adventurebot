@@ -5,15 +5,15 @@
     "Parent": "",
     
     "Has_Ceiling": true,
-    "Has_Floor": true,
+    "Has_Floor": false,
     "Is_Outside": false,
     
     "Adjacent":[
-        "dungeon cell",
-        "torturer's quarters",
-        "torture chamber",
-        "necromancy lab",
-        "dungeon landing"
+        "dungeoncell",
+        "torturerquarters",
+        "torturechamber",
+        "necromancylab",
+        "dungeonlanding"
     ],
     "North": "",
     "North_East": "",

@@ -1,6 +1,6 @@
 {
     "Name": "torture chamber",
-    "ID": "torture chamber",
+    "ID": "torturechamber",
     "Description": "You are in the torture chamber of the dungeon in the castle.",
     "Parent": "",
     
@@ -9,11 +9,11 @@
     "Is_Outside": false,
     
     "Adjacent":[
-        "dungeon cell",
-        "torturer's quarters",
-        "necromancy lab",
+        "dungeoncell",
+        "torturerquarters",
+        "necromancylab",
         "abyss",
-        "dungeon landing"
+        "dungeonlanding"
     ],
     "North": "",
     "North_East": "",

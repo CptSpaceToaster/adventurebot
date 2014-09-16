@@ -1,6 +1,6 @@
 {
     "Name": "necromancy lab",
-    "ID": "necromancy lab",
+    "ID": "necromancylab",
     "Description": "You are in the necromancy lab of the dungeon in the castle.",
     "Parent": "",
     
@@ -9,11 +9,11 @@
     "Is_Outside": false,
     
     "Adjacent":[
-        "dungeon cell",
-        "torturer's quarters",
-        "torture chamber",
+        "dungeoncell",
+        "torturerquarters",
+        "torturechamber",
         "abyss",
-        "dungeon landing"
+        "dungeonlanding"
     ],
     "North": "",
     "North_East": "",

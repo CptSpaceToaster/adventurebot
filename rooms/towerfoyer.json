@@ -1,6 +1,6 @@
 {
     "Name": "tower foyer",
-	"ID": "tower foyer",
+	"ID": "towerfoyer",
     "Description": "You are in the foyer in the tower of the castle.",
     "Parent": "",
     
@@ -11,9 +11,9 @@
     "Adjacent":[
         "observatory",
         "staircase",
-        "princess's room",
-        "dragon's roost",
-        "green house"
+        "princessroom",
+        "dragonroost",
+        "greenhouse"
     ],
     "North": "",
     "North_East": "",

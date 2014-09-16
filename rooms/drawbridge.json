@@ -9,7 +9,8 @@
     "Is_Outside": true,
     
     "Adjacent":[
-        "main floor foyer"
+        "mainfloorfoyer",
+        "largegrassyfield"
     ],
     "North": "largegrassyfield",
     "North_East": "",

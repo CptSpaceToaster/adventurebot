@@ -1,6 +1,6 @@
 {
     "Name": "basement foyer",
-	"ID": "basement foyer",
+	"ID": "basementfoyer",
     "Description": "You are in the foyer in the basement of the castle.",
     "Parent": "",
     
@@ -11,9 +11,9 @@
     "Adjacent":[
         "armoury",
         "staircase",
-        "servant's quarters",
-        "guard's quarters",
-        "alchemy lab",
+        "servantquarters",
+        "guardquarters",
+        "alchemylab",
         "pantry"
     ],
     "North": "",

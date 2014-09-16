@@ -1,6 +1,6 @@
 {
     "Name": "council of elders",
-	"ID": "council of elders",
+	"ID": "councilofelders",
     "Description": "You are in the council of the elders within the castle.",
     "Parent": "",
     
@@ -9,9 +9,9 @@
     "Is_Outside": false,
     
     "Adjacent":[
-        "second floor foyer",
-        "throne room",
-        "war room",
+        "secondfloorfoyer",
+        "throneroom",
+        "warroom",
         "oratory",
         "solarium"
     ],

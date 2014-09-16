@@ -1,6 +1,6 @@
 {
     "Name": "banquet hall",
-	"ID": "banquet hall",
+	"ID": "banquethall",
     "Description": "You are in the banquet hall of the castle.",
     "Parent": "",
     
@@ -9,7 +9,7 @@
     "Is_Outside": false,
     
     "Adjacent":[
-        "main floor foyer",
+        "mainfloorfoyer",
         "gallery",
         "kitchen",
         "ballroom",

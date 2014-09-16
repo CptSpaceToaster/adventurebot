@@ -1,6 +1,6 @@
 {
     "Name": "throne room",
-	"ID": "throne room",
+	"ID": "throneroom",
     "Description": "You are in the throne room of the castle.",
     "Parent": "",
     
@@ -9,9 +9,9 @@
     "Is_Outside": false,
     
     "Adjacent":[
-        "second floor foyer",
-        "council of elders",
-        "war room",
+        "secondfloorfoyer",
+        "councilofelders",
+        "warroom",
         "oratory",
         "solarium"
     ],

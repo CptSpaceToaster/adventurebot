@@ -1,6 +1,6 @@
 {
     "Name": "alchemy lab",
-	"ID": "alchemy lab",
+	"ID": "alchemylab",
     "Description": "You are in the alchemy lab of the castle.",
     "Parent": "",
     
@@ -9,9 +9,9 @@
     "Is_Outside": false,
     
     "Adjacent":[
-        "basement foyer",
-        "servant's quarters",
-        "guard's quarters",
+        "basementfoyer",
+        "servantquarters",
+        "guardquarters",
         "armoury",
         "panty"
     ],

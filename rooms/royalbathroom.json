@@ -1,6 +1,6 @@
 {
     "Name": "royal bathroom",
-    "ID": "royal bathroom",
+    "ID": "royalbathroom",
     "Description": "You are in the royal bathroom of the castle.",
     "Parent": "",
     
@@ -9,12 +9,12 @@
     "Is_Outside": false,
     
     "Adjacent":[
-        "third floor foyer",
-        "royal bedroom",
-        "prince's room",
-        "general's quarters",
-        "magician's quarters",
-        "magistrate's quarters"
+        "thirdfloorfoyer",
+        "royalbedroom",
+        "princeroom",
+        "generalquarters",
+        "magicianquarters",
+        "magistratequarters"
     ],
     "North": "",
     "North_East": "",

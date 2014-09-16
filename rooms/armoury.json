@@ -9,10 +9,10 @@
     "Is_Outside": false,
     
     "Adjacent":[
-        "basement foyer",
-        "servant's quarters",
-        "guard's quarters",
-        "alchemy lab",
+        "basementfoyer",
+        "servantquarters",
+        "guardquarters",
+        "alchemylab",
         "panty"
     ],
     "North": "",

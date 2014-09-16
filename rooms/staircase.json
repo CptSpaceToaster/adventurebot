@@ -9,12 +9,12 @@
     "Is_Outside": false,
     
     "Adjacent":[
-        "main floor foyer"
-        "second floor foyer"
-        "third floor foyer"
-        "tower foyer"
-        "basement foyer"
-        "dungeon landing"
+        "mainfloorfoyer"
+        "secondfloorfoyer"
+        "thirdfloorfoyer"
+        "towerfoyer"
+        "basementfoyer"
+        "dungeonlanding"
     ],
     "North": "",
     "North_East": "",

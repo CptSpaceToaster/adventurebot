@@ -1,6 +1,6 @@
 {
     "Name": "green house",
-	"ID": "green house",
+	"ID": "greenhouse",
     "Description": "You are in the green house of the castle.",
     "Parent": "",
     
@@ -9,9 +9,9 @@
     "Is_Outside": false,
     
     "Adjacent":[
-        "tower foyer",
-        "princess's room",
-        "dragon's roost",
+        "towerfoyer",
+        "princessroom",
+        "dragonroost",
         "observatory"
     ],
     "North": "",

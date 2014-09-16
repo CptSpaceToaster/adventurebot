@@ -9,10 +9,10 @@
     "Is_Outside": false,
     
     "Adjacent":[
-        "main floor foyer",
+        "mainfloorfoyer",
         "library",
         "kitchen",
-        "banquet hall",
+        "banquethall",
         "ballroom"
     ],
     "North": "",
