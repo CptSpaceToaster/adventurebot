@@ -11,6 +11,9 @@
     "Is_Outside": true,
 
     "Adjacent": [
+        "beach1",
+        "beach2",
+        "beach3",
         "drawbridge"
     ],
     "North": "",
