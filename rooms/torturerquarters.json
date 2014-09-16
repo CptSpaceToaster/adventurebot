@@ -1,7 +1,7 @@
 {
-    "Name": "general's quarters",
-    "ID": "general's quarters",
-    "Description": "You are in the general's quarters in the castle.",
+    "Name": "torturer quarters",
+    "ID": "torturerquarters",
+    "Description": "You are in the torturer quarters of the dungeon in the castle.",
     "Parent": "",
     
     "Has_Ceiling": true,
@@ -9,12 +9,11 @@
     "Is_Outside": false,
     
     "Adjacent":[
-        "third floor foyer",
-        "royal bathroom",
-        "royal bedroom",
-        "prince's room",
-        "magician's quarters",
-        "magistrate's quarters"
+        "dungeoncell",
+        "torturechamber",
+        "necromancylab",
+        "abyss",
+        "dungeonlanding"
     ],
     "North": "",
     "North_East": "",

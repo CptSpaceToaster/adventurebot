@@ -1,7 +1,7 @@
 {
-    "Name": "guard's quarters",
-	"ID": "guard's quarters",
-    "Description": "You are in the guard's quarters of the castle.",
+    "Name": "general quarters",
+    "ID": "generalquarters",
+    "Description": "You are in the general's quarters in the castle.",
     "Parent": "",
     
     "Has_Ceiling": true,
@@ -9,11 +9,12 @@
     "Is_Outside": false,
     
     "Adjacent":[
-        "basement foyer",
-        "servant's quarters",
-        "armoury",
-        "alchemy lab",
-        "panty"
+        "thirdfloorfoyer",
+        "royalbathroom",
+        "royalbedroom",
+        "princeroom",
+        "magicianquarters",
+        "magistratequarters"
     ],
     "North": "",
     "North_East": "",
@@ -27,9 +28,9 @@
     "Down": "",
     
     "Items": [
-	""
-	],	
+    ""
+    ],  
     "Widgets": [
-	""
-	]
+    ""
+    ]
 }

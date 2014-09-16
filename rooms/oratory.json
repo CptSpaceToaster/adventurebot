@@ -9,10 +9,10 @@
     "Is_Outside": false,
     
     "Adjacent":[
-        "second floor foyer",
-        "throne room",
-        "council of elders",
-        "war room",
+        "secondfloorfoyer",
+        "throneroom",
+        "councilofelders",
+        "warroom",
         "solarium"
     ],
     "North": "",

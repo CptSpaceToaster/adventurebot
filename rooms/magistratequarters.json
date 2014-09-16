@@ -1,7 +1,7 @@
 {
-    "Name": "magistrate's quarters",
-    "ID": "magistrate's quarters",
-    "Description": "You are in the magistrate's quarters in the castle.",
+    "Name": "magistrate quarters",
+    "ID": "magistratequarters",
+    "Description": "You are in the magistrate quarters in the castle.",
     "Parent": "",
     
     "Has_Ceiling": true,
@@ -9,12 +9,12 @@
     "Is_Outside": false,
     
     "Adjacent":[
-        "third floor foyer",
-        "royal bathroom",
-        "royal bedroom",
-        "prince's room",
-        "magician's quarters",
-        "general's quarters"
+        "thirdfloorfoyer",
+        "royalbathroom",
+        "royalbedroom",
+        "princeroom",
+        "magicianquarters",
+        "generalquarters"
     ],
     "North": "",
     "North_East": "",

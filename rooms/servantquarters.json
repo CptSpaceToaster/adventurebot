@@ -1,18 +1,19 @@
 {
-    "Name": "dragon's roost",
-	"ID": "dragon's roost",
-    "Description": "You are in the dragon's roost in the tower of the castle.",
+    "Name": "servant quarters",
+	"ID": "servantquarters",
+    "Description": "You are in the servant quarters of the castle.",
     "Parent": "",
     
-    "Has_Ceiling": false,
+    "Has_Ceiling": true,
     "Has_Floor": true,
     "Is_Outside": false,
     
     "Adjacent":[
-        "tower foyer",
-        "princess's room",
-        "observatory",
-        "green house"
+        "basementfoyer",
+        "armoury",
+        "guardquarters",
+        "alchemylab",
+        "panty"
     ],
     "North": "",
     "North_East": "",

@@ -1,6 +1,6 @@
 {
     "Name": "third floor foyer",
-	"ID": "third floor foyer",
+	"ID": "thirdfloorfoyer",
     "Description": "You are in the foyer on the third floor of the castle.",
     "Parent": "",
     
@@ -9,13 +9,13 @@
     "Is_Outside": false,
     
     "Adjacent":[
-        "royal bedroom",
+        "royalbedroom",
         "staircase",
-        "royal bathroom",
-        "prince's room",
-        "general's quarters",
-        "magician's quarters",
-        "magistrate's quarters"
+        "royalbathroom",
+        "princeroom",
+        "generalquarters",
+        "magicianquarters",
+        "magistratequarters"
     ],
     "North": "",
     "North_East": "",

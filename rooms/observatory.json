@@ -9,10 +9,10 @@
     "Is_Outside": false,
     
     "Adjacent":[
-        "tower foyer",
-        "princess's room",
-        "dragon's roost",
-        "green house"
+        "towerfoyer",
+        "princessroom",
+        "dragonroost",
+        "greenhouse"
     ],
     "North": "",
     "North_East": "",

@@ -1,7 +1,7 @@
 {
-    "Name": "princess's room",
-	"ID": "princess's room",
-    "Description": "You are in the princess's room in the tower of the castle.",
+    "Name": "magician quarters",
+    "ID": "magicianquarters",
+    "Description": "You are in the magician quarters in the castle.",
     "Parent": "",
     
     "Has_Ceiling": true,
@@ -9,10 +9,12 @@
     "Is_Outside": false,
     
     "Adjacent":[
-        "tower foyer",
-        "observatory",
-        "dragon's roost",
-        "green house"
+        "thirdfloorfoyer",
+        "royalbathroom",
+        "royalbedroom",
+        "princeroom",
+        "generalquarters",
+        "magistratequarters"
     ],
     "North": "",
     "North_East": "",
@@ -26,9 +28,9 @@
     "Down": "",
     
     "Items": [
-	""
-	],	
+    ""
+    ],  
     "Widgets": [
-	""
-	]
+    ""
+    ]
 }

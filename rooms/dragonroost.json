@@ -1,19 +1,18 @@
 {
-    "Name": "ballroom",
-	"ID": "ballroom",
-    "Description": "You are in the ballroom of the castle.",
+    "Name": "dragon roost",
+	"ID": "dragonroost",
+    "Description": "You are in the dragon roost in the tower of the castle.",
     "Parent": "",
     
-    "Has_Ceiling": true,
+    "Has_Ceiling": false,
     "Has_Floor": true,
     "Is_Outside": false,
     
     "Adjacent":[
-        "kitchen",
-        "gallery",
-        "banquethall",
-        "mainfloorfoyer",
-        "library"
+        "towerfoyer",
+        "princessroom",
+        "observatory",
+        "greenhouse"
     ],
     "North": "",
     "North_East": "",

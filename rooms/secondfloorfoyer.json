@@ -1,6 +1,6 @@
 {
     "Name": "second floor foyer",
-	"ID": "second floor foyer",
+	"ID": "secondfloorfoyer",
     "Description": "You are in the foyer of the second floor of the castle.",
     "Parent": "",
     
@@ -9,10 +9,10 @@
     "Is_Outside": false,
     
     "Adjacent":[
-        "throne room",
+        "throneroom",
         "staircase",
-        "council of elders",
-        "war room",
+        "councilofelders",
+        "warroom",
         "oratory",
         "solarium"
     ],

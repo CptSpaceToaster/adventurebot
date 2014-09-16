@@ -1,6 +1,6 @@
 {
     "Name": "war room",
-	"ID": "dungeon landing",
+	"ID": "warroom",
     "Description": "You are in the war room of the castle.",
     "Parent": "",
     
@@ -9,9 +9,9 @@
     "Is_Outside": false,
     
     "Adjacent":[
-        "second floor foyer",
-        "throne room",
-        "council of elders",
+        "secondfloorfoyer",
+        "throneroom",
+        "councilofelders",
         "oratory",
         "solarium"
     ],
