@@ -1,7 +1,7 @@
 {
     "Name": "gallery",
 	"ID": "gallery",
-    "Description": "Masterpieces rendered in both paint and stone surround you. A breath taking bust of the Morpheus from the matrix figures prominently in the center of the room. On a raised dias in the back is `portrait` of the current king and queen. Some other works catch your eye, but none so much as a mirror. Clearly some art school grad student was going for a, find the art within yourself vibe. The exits lead to the `kitchen`, `ballroom`, `banquethall`, `mainfloorfoyer`, and `library`.",
+    "Description": "Masterpieces rendered in both paint and stone surround you. A breath taking `bust` of the Morpheus from the matrix figures prominently in the center of the room. On a raised dias in the back is `portrait` of the current king and queen. Some other works catch your eye, but none so much as a mirror. Clearly some art school grad student was going for a, find the art within yourself vibe. The exits lead to the `kitchen`, `ballroom`, `banquethall`, `mainfloorfoyer`, and `library`.",
     "Parent": "",
     
     "Has_Ceiling": true,
@@ -27,7 +27,7 @@
     "Down": "",
     
     "Items": [
-	""
+	"bust"
 	],	
     "Widgets": [
 	"portrait"

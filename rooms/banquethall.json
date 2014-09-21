@@ -1,7 +1,7 @@
 {
     "Name": "banquet hall",
 	"ID": "banquethall",
-    "Description": "A long table stretches down the center of the `banquethall`. No food is on it, which is unfortunate as it has been a while since you had a good meal. You do manage to spy an empty `goblet` however. Now if only you had some `wine`. The rooms nearest you are the `kitchen`, `gallery`, `mainfloorfoyer`, `ballroom` and `library`.",
+    "Description": "A long table stretches down the center of the `banquethall`. No food is on it, which cause audible whining from some sad and hungry adventurer. You do manage to spy an empty `goblet` at the very far end of the table however. Now if only you had some `wine`. The rooms nearest you are the `kitchen`, `gallery`, `mainfloorfoyer`, `ballroom` and `library`.",
     "Parent": "",
     
     "Has_Ceiling": true,
