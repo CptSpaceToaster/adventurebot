@@ -1,7 +1,7 @@
 {
     "Name": "main floor foyer",
 	"ID": "mainfloorfoyer",
-    "Description": "You are in the foyer on the main floor of the castle.",
+    "Description": "The foyer is filled with `tapestries` depicting various triumphs of the realm. One appears to be hand crocheted by the king himself. It's not very good. Around you are a slew of rooms, a `kitchen`, `banquethall`, `gallery`, `library`, ballroom`, and `staircase` are all accessible. Behind you is the `drawbridge`.",
     "Parent": "",
     
     "Has_Ceiling": true,
@@ -10,7 +10,7 @@
     
     "Adjacent":[
 		"kitchen",
-		"banquet hall",
+		"banquethall",
 		"gallery",
 		"library",
 		"ballroom",
@@ -32,6 +32,6 @@
 	""
 	],	
     "Widgets": [
-	""
+	"tapestries"
 	]
 }

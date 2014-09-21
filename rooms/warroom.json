@@ -1,7 +1,7 @@
 {
     "Name": "war room",
 	"ID": "warroom",
-    "Description": "You are in the war room of the castle.",
+    "Description": "On the table in the middle of the room is a large `map`. It shows the location of the realm's cities, villages, and troops. The `general` appears to be studying the `map`. Weapons from the realm's greatest warriors are on display around the room. Hanging on the walls are Njord's `mystical bow`, Sven's `enchanted halberd`, and Fluffy's `cotton ball`. Close to you is the `councilofelders`, the `throneroom`, the `oratory`, the `solarium`, and the `secondfloorfoyer`.",
     "Parent": "",
     
     "Has_Ceiling": true,
@@ -27,9 +27,12 @@
     "Down": "",
     
     "Items": [
-	""
+	"enchanted halberd",
+    "mystical bow",
+    "cotton ball"
 	],	
     "Widgets": [
-	""
+	"map",
+    "general"
 	]
 }

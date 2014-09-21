@@ -1,7 +1,7 @@
 {
     "Name": "drawbridge",
 	"ID": "drawbridge",
-    "Description": "You are on the drawbridge outside of a very large castle.",
+    "Description": "You appear to be on a `drawbridge`. It looks to be made of oak or cedar or some other wood. You never paid enough attention in arborology in high school anyways. Massive chains connect the bridge to the parapets of the towering structure before you. A large `plaque` is on outside castle wall. To the `North` is a `largegrassyfield`. In front of you is the `mainfloorfoyer` of the castle. At your feet you see a cliche `welcomemat`.",
     "Parent": "",
     
     "Has_Ceiling": false,
@@ -27,6 +27,7 @@
 	""
 	],	
     "Widgets": [
-	""
+	"welcomemat",
+    "plaque"
 	]
 }
