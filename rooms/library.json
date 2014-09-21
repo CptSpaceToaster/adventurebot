@@ -1,7 +1,7 @@
 {
     "Name": "library",
 	"ID": "library",
-    "Description": "You are in the library of the castle.",
+    "Description": "Rows and rows of books lie before you. Or maybe they're tomes. Eh, not many look interesting anyway save for three. A `textbook` which fell on you, a `comic` about unicorns and monster trucks, and a `spellbook` all distract you for a moment before you put them back. You'd stay but then you might get labelled a nerd and you _cannot_ have that sort of a reputation. Around you is a `kitchen`, `gallery`, `mainfloorfoyer`, `ballroom`, and a `banquethall`.",
     "Parent": "",
     
     "Has_Ceiling": true,
@@ -27,7 +27,9 @@
     "Down": "",
     
     "Items": [
-	""
+	"textbook",
+    "comic",
+    "spellbook"
 	],	
     "Widgets": [
 	""

@@ -1,7 +1,7 @@
 {
     "Name": "second floor foyer",
 	"ID": "secondfloorfoyer",
-    "Description": "You are in the foyer of the second floor of the castle.",
+    "Description": "The second floor of the castle opens up to you. A massive `chandelier` hangs from the ceiling, sending light through many faceted panes of glass and cascading all around the room. Nearby you can see the `throneroom`, the `councilofelders`, the `oratory`, the `solarium`, and the `warroom`. The `staircase` is behind you.",
     "Parent": "",
     
     "Has_Ceiling": true,
@@ -31,6 +31,6 @@
 	""
 	],	
     "Widgets": [
-	""
+	"chandelier"
 	]
 }
