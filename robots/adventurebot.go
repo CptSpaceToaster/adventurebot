@@ -89,28 +89,54 @@ func (p AdventureBot) DeferredAction(command *SlashCommand) {
 	fmt.Println(action)
 
 	if action[0] == "look" {
-		Say(Rooms[player.Location].Description)
+		SayDesc(Rooms[player.Location])
 	} else if action[0] == "go" && len(action) >= 2 {
-		if _, exist := Rooms[action[1]]; exist {
-			fmt.Println(Rooms[player.Location])
-			fmt.Println(action[1])
-
-			if player.Location == action[1] {
-				Say(fmt.Sprintf("%s is already in the %s", player.Name, player.Location))
-			} else if StringInSlice(action[1], Rooms[player.Location].Adjacent) {
-				player.Last_Location = player.Location
-				player.Location = action[1]
-				Say(fmt.Sprintf("%s is now in the %s", player.Name, player.Location))
+		//parse room name
+		var target = ""
+		for index, s := range action {
+			if index == len(action)-1 {
+				target += s
+			} else if index > 0 {
+				target += s + " "
 			}
-		} else {
-			Say(fmt.Sprintf("%s can not %s to %s", player.Name, action[0], action[1]))
 		}
+		fmt.Println(Rooms[player.Location])
+		fmt.Println("-" + target + "-")
+		//check for current room
+		if StringInSlice(target, Rooms[player.Location].Names) {
+			Say(fmt.Sprintf("%s is already in the %s", player.Name, player.Location))
+			target = ""
+		}
+		//check for adjacent rooms
+		for _, r := range Rooms[player.Location].Adjacent {
+			fmt.Print("Looking at " + r)
+			if _, exist := Rooms[r]; exist {
+				fmt.Println(" Found!")
+				if StringInSlice(target, Rooms[r].Names) {
+					player.Last_Location = player.Location
+					player.Location = Rooms[r].ID
+					//Say(fmt.Sprintf("%s is now in the %s", player.Name, Rooms[player.Location].Names[0]))
+					SayDesc(Rooms[r])
+					target = ""
+					break
+				}
+			}
+		}
+		//Can't go there
+		if target != "" {
+			Say(fmt.Sprintf("%s can not %s to %s", player.Name, action[0], target))
+		}
+
 	} else {
 		Say(fmt.Sprintf("I do not understand what %s is trying to say", command.User_Name))
 	}
 	//Lock
 	Players[player.Name] = player //Update the instance of the player in Players
 	//Unlock
+}
+
+func SayDesc(r Room) {
+	Say(r.Names[0] + "\n______________________________________________\n" + r.Description)
 }
 
 func Say(text string) {
@@ -127,7 +153,8 @@ func Say(text string) {
 
 func StringInSlice(a string, list []string) bool {
 	for _, b := range list {
-		if b == a {
+		fmt.Println(strings.ToLower(b) + " --- " + a)
+		if strings.ToLower(b) == a {
 			return true
 		}
 	}
