@@ -1,5 +1,10 @@
 {
-    "Name": "princess room",
+    "Names": [
+        "Princess' Room",
+		"Princess's Room",
+		"Princesss Room",
+		"Princess Room"
+    ],
 	"ID": "princessroom",
     "Description": "You are in the princess room in the tower of the castle.",
     "Parent": "",

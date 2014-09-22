@@ -1,5 +1,7 @@
 {
-    "Name": "kitchen",
+    "Names": [
+        "Kitchen"
+    ],
 	"ID": "kitchen",
     "Description": "A stone fireplace is in the middle of the room. On either side of it are areas for preparing meals served to the royalty and their guests. A large `knife` sits on a platter that once held a pig but now holds only bones. Your hungry stomach rumbles, alerting you to the fact that you are indeed hungry. Should you want to search for food, there may be some in the `ballroom`, `banquethall`, `library`, `mainfloorfoyer`, or `gallery`.",
     "Parent": "",

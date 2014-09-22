@@ -1,5 +1,7 @@
 {
-    "Name": "dragon roost",
+    "Names": [
+        "Dragon Roost"
+    ],
 	"ID": "dragonroost",
     "Description": "You are in the dragon roost in the tower of the castle.",
     "Parent": "",

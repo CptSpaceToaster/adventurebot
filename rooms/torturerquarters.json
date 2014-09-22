@@ -1,5 +1,9 @@
 {
-    "Name": "torturer quarters",
+    "Names": [
+        "Torturer's Quarters",
+		"Torturers Quarters",
+		"Torturer Quarters"
+    ],
     "ID": "torturerquarters",
     "Description": "You are in the torturer quarters of the dungeon in the castle.",
     "Parent": "",

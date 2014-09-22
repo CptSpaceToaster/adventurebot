@@ -1,5 +1,7 @@
 {
-    "Name": "alchemy lab",
+    "Names": [
+        "Alchemy Lab"
+    ],
 	"ID": "alchemylab",
     "Description": "You are in the alchemy lab of the castle.",
     "Parent": "",

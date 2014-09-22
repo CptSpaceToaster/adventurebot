@@ -1,5 +1,7 @@
 {
-    "Name": "observatory",
+    "Names": [
+        "Observatory"
+    ],
 	"ID": "observatory",
     "Description": "You are in the observatory of the castle.",
     "Parent": "",

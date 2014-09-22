@@ -1,5 +1,7 @@
 {
-    "Name": "dungeon cell",
+    "Names": [
+        "Dungeon Cell"
+    ],
     "ID": "dungeoncell",
     "Description": "You are in the prisoner's cell of the dungeon in the castle.",
     "Parent": "",

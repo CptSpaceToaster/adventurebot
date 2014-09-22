@@ -1,5 +1,7 @@
 {
-    "Name": "oratory",
+    "Names": [
+        "Oratory"
+    ],
 	"ID": "oratory",
     "Description": "Stained glass windows let radiant light pour in, illuminating the `altar` on which rests a `golden chalice`. The largest window depicts a flamigo standing triumphantly in a river, wings spread wide. The pink of the feathers feels more intense than any other color you have ever seen. A water `basin` stands near the entrance. In the balcony the choir sings, their voices swirl about the room, echoing off the walls and ceiling. The entire room has a feeling of aethereal power about it. It is both moving and unnerving at the same time. Closest options for retreat are the `solarium, `warroom`, `throneroom`, `councilofelders`, and the `secondfloorfoyer`.",
     "Parent": "",

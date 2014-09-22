@@ -1,5 +1,9 @@
 {
-    "Name": "servant quarters",
+    "Names": [
+        "Servant's Quarters",
+		"Servants Quuarters",
+		"Servant Quarters"
+    ],
 	"ID": "servantquarters",
     "Description": "You are in the servant quarters of the castle.",
     "Parent": "",

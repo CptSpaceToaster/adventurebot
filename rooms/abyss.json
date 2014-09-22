@@ -1,5 +1,7 @@
 {
-    "Name": "abyss",
+    "Names": [
+        "Abyss"
+    ],
     "ID": "abyss",
     "Description": "You are by an abyss.",
     "Parent": "",

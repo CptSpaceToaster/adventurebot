@@ -1,5 +1,7 @@
 {
-    "Name": "council of elders",
+    "Names": [
+        "Council of Elders"
+    ],
 	"ID": "councilofelders",
     "Description": "The bench at which the elders sit forms a hemisphere about the room. Here those accused of minor crimes are tried. Such crimes include, but are not limited to: crying in front of a rock, stealing, chewing with your mouth open, and minor genocide. The chief elder's `gavel` rests by his seat in the center of the bench. Adjacent rooms are the `warroom`, `oratory`, `solarium`, `throneroom`, and the `secondfloorfoyer`.",
     "Parent": "",

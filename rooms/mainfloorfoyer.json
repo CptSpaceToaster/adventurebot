@@ -1,5 +1,11 @@
 {
-    "Name": "main floor foyer",
+    "Names": [
+		"Main Floor Foyer",
+		"Main Floor",
+		"Main",
+		"Castle Door",
+		"Castle"
+	],
 	"ID": "mainfloorfoyer",
     "Description": "The foyer is filled with `tapestries` depicting various triumphs of the realm. One appears to be hand crocheted by the king himself. It's not very good. Around you are a slew of rooms, a `kitchen`, `banquethall`, `gallery`, `library`, `ballroom`, and `staircase` are all accessible. Behind you is the `drawbridge`.",
     "Parent": "",

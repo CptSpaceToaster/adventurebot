@@ -1,5 +1,7 @@
 {
-    "Name": "ballroom",
+    "Names": [
+        "Ballroom"
+    ],
 	"ID": "ballroom",
     "Description": "True masters of dance have twirled on these floors. Hoping to channel their abilities, you attempt a few dance moves. Nope, you still suck. At least there is a `violin` in the corner. But it seems to be missing some `strings`. Nearby rooms include a `library`, `mainfloorfoyer`, `banquethall`, `gallery`, and `kitchen`.",
     "Parent": "",

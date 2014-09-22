@@ -1,5 +1,7 @@
 {
-    "Name": "armoury",
+    "Names": [
+        "Armoury"
+    ],
 	"ID": "armoury",
     "Description": "You are in the armoury of the castle.",
     "Parent": "",

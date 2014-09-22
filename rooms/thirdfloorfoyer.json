@@ -1,5 +1,8 @@
 {
-    "Name": "third floor foyer",
+    "Names": [
+        "Third Floor Foyer",
+		"Third Floor"
+    ],
 	"ID": "thirdfloorfoyer",
     "Description": "You are in the foyer on the third floor of the castle.",
     "Parent": "",

@@ -1,5 +1,8 @@
 {
-    "Name": "second floor foyer",
+    "Names": [
+        "Second Floor Foyer",
+		"Second Floor"
+    ],
 	"ID": "secondfloorfoyer",
     "Description": "The second floor of the castle opens up to you. A massive `chandelier` hangs from the ceiling, sending light through many faceted panes of glass and cascading all around the room. Nearby you can see the `throneroom`, the `councilofelders`, the `oratory`, the `solarium`, and the `warroom`. The `staircase` is behind you.",
     "Parent": "",
