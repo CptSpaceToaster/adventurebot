@@ -15,7 +15,15 @@ var Rooms = make(map[string]Room)
 var Widgets = make(map[string]Widget)
 
 var filter = []string{"around", "by", "near", "towards", "to", "the", "a", "an"}
-var movement = []string{"go", "move", "walk", "frollic", "travel", "crawl", "roll", "skip", "stumble", "meander"}
+var movement = []string{"go", "move", "walk", "frollic", "climb", "travel", "crawl", "roll", "skip", "stumble", "meander"}
+var norths = []string{"n", "north", "nort", "norht", "norh"}
+var northeasts = []string{"ne", "northeast", "norhteast", "norteast", "norheast", "norhteas", "norteas", "norheas"}
+var easts = []string{"e", "east", "eas"}
+var southeasts = []string{"se", "southeast", "souhteast", "souteast", "souheast", "souhteas", "souteas", "souheas"}
+var souths = []string{"s", "south", "sout", "souht", "souh"}
+var southwests = []string{"sw", "southwest", "souhtwest", "soutwest", "souhwest", "souhtwes", "soutwes", "souhwes"}
+var wests = []string{"w", "west", "wes"}
+var northwests = []string{"nw", "northwest", "norhtwest", "nortwest", "norhwest", "norhtwes", "nortwes", "norhwes"}
 
 type AdventureBot struct {
 }
@@ -106,7 +114,54 @@ func (p AdventureBot) DeferredAction(command *SlashCommand) {
 		fmt.Println(Rooms[player.Location])
 		fmt.Println("-" + target + "-")
 		//check for compass directions
-
+		if StringInSlice(target, norths) {
+			if Rooms[player.Location].North != "" {
+				player = move(player, Rooms[Rooms[player.Location].North])
+			}
+			target = ""
+		}
+		if StringInSlice(target, northeasts) {
+			if Rooms[player.Location].North_East != "" {
+				player = move(player, Rooms[Rooms[player.Location].North_East])
+			}
+			target = ""
+		}
+		if StringInSlice(target, easts) {
+			if Rooms[player.Location].East != "" {
+				player = move(player, Rooms[Rooms[player.Location].East])
+			}
+			target = ""
+		}
+		if StringInSlice(target, southeasts) {
+			if Rooms[player.Location].South_East != "" {
+				player = move(player, Rooms[Rooms[player.Location].South_East])
+			}
+			target = ""
+		}
+		if StringInSlice(target, souths) {
+			if Rooms[player.Location].South != "" {
+				player = move(player, Rooms[Rooms[player.Location].South])
+			}
+			target = ""
+		}
+		if StringInSlice(target, southwests) {
+			if Rooms[player.Location].South_West != "" {
+				player = move(player, Rooms[Rooms[player.Location].South_West])
+			}
+			target = ""
+		}
+		if StringInSlice(target, wests) {
+			if Rooms[player.Location].West != "" {
+				player = move(player, Rooms[Rooms[player.Location].West])
+			}
+			target = ""
+		}
+		if StringInSlice(target, northwests) {
+			if Rooms[player.Location].North_West != "" {
+				player = move(player, Rooms[Rooms[player.Location].North_West])
+			}
+			target = ""
+		}
 		//check for current room
 		if StringInSlice(target, Rooms[player.Location].Names) {
 			Say(fmt.Sprintf("%s is already in the %s", player.Name, player.Location))
@@ -118,10 +173,7 @@ func (p AdventureBot) DeferredAction(command *SlashCommand) {
 			if _, exist := Rooms[r]; exist {
 				fmt.Println(" Found!")
 				if StringInSlice(target, Rooms[r].Names) {
-					player.Last_Location = player.Location
-					player.Location = Rooms[r].ID
-					//Say(fmt.Sprintf("%s is now in the %s", player.Name, Rooms[player.Location].Names[0]))
-					SayDesc(Rooms[r])
+					player = move(player, Rooms[r])
 					target = ""
 					break
 				}
@@ -138,6 +190,14 @@ func (p AdventureBot) DeferredAction(command *SlashCommand) {
 	//Lock
 	Players[player.Name] = player //Update the instance of the player in Players
 	//Unlock
+}
+
+func move(p Player, r Room) Player {
+	p.Last_Location = p.Location
+	p.Location = r.ID
+	//Say(fmt.Sprintf("%s is now in the %s", player.Name, Rooms[player.Location].Names[0]))
+	SayDesc(r)
+	return p
 }
 
 func SayDesc(r Room) {
