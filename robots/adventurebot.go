@@ -15,6 +15,7 @@ var Rooms = make(map[string]Room)
 var Widgets = make(map[string]Widget)
 
 var filter = []string{"around", "by", "near", "towards", "to", "the", "a", "an"}
+var movement = []string{"go", "move", "walk", "frollic", "travel", "crawl", "roll", "skip", "stumble", "meander"}
 
 type AdventureBot struct {
 }
@@ -53,7 +54,7 @@ func RegisterRooms(roomdirloc string) {
 			json.Unmarshal(input, &r)
 			if r.ID != "" {
 				Rooms[r.ID] = r
-				fmt.Println("Loaded: " + r.ID)
+				//fmt.Println("Loaded: " + r.ID)
 			}
 		}
 	}
@@ -92,8 +93,8 @@ func (p AdventureBot) DeferredAction(command *SlashCommand) {
 
 	if action[0] == "look" {
 		SayDesc(Rooms[player.Location])
-	} else if action[0] == "go" && len(action) >= 2 {
-		//parse room name
+	} else if StringInSlice(action[0], movement) && len(action) >= 2 {
+		//smash room name together
 		var target = ""
 		for index, s := range action {
 			if index == len(action)-1 {
@@ -104,6 +105,8 @@ func (p AdventureBot) DeferredAction(command *SlashCommand) {
 		}
 		fmt.Println(Rooms[player.Location])
 		fmt.Println("-" + target + "-")
+		//check for compass directions
+
 		//check for current room
 		if StringInSlice(target, Rooms[player.Location].Names) {
 			Say(fmt.Sprintf("%s is already in the %s", player.Name, player.Location))
@@ -164,18 +167,14 @@ func StringInSlice(a string, list []string) bool {
 }
 
 func StringParse(in string) []string {
+	//remove any question marks, split strings by spaces
 	action := strings.Split(strings.Trim(strings.Trim(strings.ToLower(in), "?"), " "), " ")
 	out := make([]string, 0)
-	fmt.Print("BEFORE: ")
-	fmt.Println(out)
 	for _, s := range action {
-		fmt.Println(s)
 		if !StringInSlice(s, filter) {
 			out = append(out, s)
 		}
 	}
-	fmt.Print("AFTER: ")
-	fmt.Println(out)
 	return out
 }
 
