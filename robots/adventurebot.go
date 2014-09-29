@@ -14,6 +14,8 @@ var Items = make(map[string]Item)
 var Rooms = make(map[string]Room)
 var Widgets = make(map[string]Widget)
 
+var filter = []string{"around", "by", "near", "towards", "to", "the", "a", "an"}
+
 type AdventureBot struct {
 }
 
@@ -85,7 +87,7 @@ func (p AdventureBot) DeferredAction(command *SlashCommand) {
 	//RLock
 	player := Players[command.User_Name]
 	//RUnlock
-	action := strings.Split(strings.Trim(strings.Trim(strings.ToLower(command.Text), "?"), " "), " ")
+	action := StringParse(command.Text)
 	fmt.Println(action)
 
 	if action[0] == "look" {
@@ -153,12 +155,28 @@ func Say(text string) {
 
 func StringInSlice(a string, list []string) bool {
 	for _, b := range list {
-		fmt.Println(strings.ToLower(b) + " --- " + a)
+		//fmt.Println(strings.ToLower(b) + " --- " + a)
 		if strings.ToLower(b) == a {
 			return true
 		}
 	}
 	return false
+}
+
+func StringParse(in string) []string {
+	action := strings.Split(strings.Trim(strings.Trim(strings.ToLower(in), "?"), " "), " ")
+	out := make([]string, 0)
+	fmt.Print("BEFORE: ")
+	fmt.Println(out)
+	for _, s := range action {
+		fmt.Println(s)
+		if !StringInSlice(s, filter) {
+			out = append(out, s)
+		}
+	}
+	fmt.Print("AFTER: ")
+	fmt.Println(out)
+	return out
 }
 
 func (p AdventureBot) Description() (description string) {
