@@ -14,8 +14,8 @@ var Items = make(map[string]Item)
 var Rooms = make(map[string]Room)
 var Widgets = make(map[string]Widget)
 
-var filter = []string{"around", "by", "near", "towards", "to", "the", "a", "an"}
-var movement = []string{"go", "move", "walk", "frollic", "climb", "travel", "crawl", "roll", "skip", "stumble", "meander"}
+var filter = []string{"around", "by", "near", "towards", "to", "the", "a", "an", "on", "in"}
+var movement = []string{"go", "move", "walk", "frollic", "climb", "travel", "crawl", "roll", "skip", "stumble", "meander", "cartwheel"}
 var norths = []string{"n", "north", "nort", "norht", "norh"}
 var northeasts = []string{"ne", "northeast", "norhteast", "norteast", "norheast", "norhteas", "norteas", "norheas"}
 var easts = []string{"e", "east", "eas"}
@@ -117,50 +117,50 @@ func (p AdventureBot) DeferredAction(command *SlashCommand) {
 		if StringInSlice(target, norths) {
 			if Rooms[player.Location].North != "" {
 				player = move(player, Rooms[Rooms[player.Location].North])
+				target = ""
 			}
-			target = ""
 		}
 		if StringInSlice(target, northeasts) {
 			if Rooms[player.Location].North_East != "" {
 				player = move(player, Rooms[Rooms[player.Location].North_East])
+				target = ""
 			}
-			target = ""
 		}
 		if StringInSlice(target, easts) {
 			if Rooms[player.Location].East != "" {
 				player = move(player, Rooms[Rooms[player.Location].East])
+				target = ""
 			}
-			target = ""
 		}
 		if StringInSlice(target, southeasts) {
 			if Rooms[player.Location].South_East != "" {
 				player = move(player, Rooms[Rooms[player.Location].South_East])
+				target = ""
 			}
-			target = ""
 		}
 		if StringInSlice(target, souths) {
 			if Rooms[player.Location].South != "" {
 				player = move(player, Rooms[Rooms[player.Location].South])
+				target = ""
 			}
-			target = ""
 		}
 		if StringInSlice(target, southwests) {
 			if Rooms[player.Location].South_West != "" {
 				player = move(player, Rooms[Rooms[player.Location].South_West])
+				target = ""
 			}
-			target = ""
 		}
 		if StringInSlice(target, wests) {
 			if Rooms[player.Location].West != "" {
 				player = move(player, Rooms[Rooms[player.Location].West])
+				target = ""
 			}
-			target = ""
 		}
 		if StringInSlice(target, northwests) {
 			if Rooms[player.Location].North_West != "" {
 				player = move(player, Rooms[Rooms[player.Location].North_West])
+				target = ""
 			}
-			target = ""
 		}
 		//check for current room
 		if StringInSlice(target, Rooms[player.Location].Names) {
@@ -181,7 +181,7 @@ func (p AdventureBot) DeferredAction(command *SlashCommand) {
 		}
 		//Can't go there
 		if target != "" {
-			Say(fmt.Sprintf("%s can not %s to %s", player.Name, action[0], target))
+			Say(fmt.Sprintf("%s can not %s there", player.Name, action[0]))
 		}
 
 	} else {
@@ -229,7 +229,9 @@ func StringInSlice(a string, list []string) bool {
 func StringParse(in string) []string {
 	//remove any question marks, split strings by spaces
 	action := strings.Split(strings.Trim(strings.Trim(strings.ToLower(in), "?"), " "), " ")
+	//create a new array
 	out := make([]string, 0)
+	//fill it in order, while stilling elements in the filter.
 	for _, s := range action {
 		if !StringInSlice(s, filter) {
 			out = append(out, s)
