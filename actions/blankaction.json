@@ -1,0 +1,14 @@
+{
+    "commands": [
+        "frob"
+    ],
+    "id": "blankaction",
+    "result": "You frob the widget!",
+    "teleport": "",
+    "requires": [
+        ""
+    ],
+    "gives": [
+        ""
+    ]
+}

@@ -47,6 +47,7 @@ type Widget struct {
 
 type Action struct {
 	Commands []string      `json:"commands"`
+	ID       string        `json:"id"`
 	Result   string        `json:"result"`
 	Teleport string        `json:"teleport,omitempty"`
 	Requires []Requirement `json:"requires,omitempty"`
