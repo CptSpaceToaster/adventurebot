@@ -16,11 +16,14 @@ var Widgets = make(map[string]Widget)
 var Actions = make(map[string]Action)
 var Requirements = make(map[string]Requirement)
 
-var Verbs = make(map[string]string)
-var Nouns = make(map[string]string)
+var Nouns = make(map[string][]string)
+var Adjectives = make(map[string][]string)
+var Verbs = make(map[string][]string)
+var Adverbs = make(map[string][]string)
 
-var filter = []string{"around", "by", "near", "towards", "to", "the", "a", "an", "on", "in"}
-var movement = []string{"go", "move", "walk", "frollic", "climb", "travel", "crawl", "roll", "skip", "stumble", "meander", "cartwheel"}
+//var filter = []string{"around", "by", "near", "towards", "to", "the", "a", "an", "on", "in"}
+
+//var movement = []string{"go", "move", "walk", "frollic", "climb", "travel", "crawl", "roll", "skip", "stumble", "meander", "cartwheel"}
 var norths = []string{"n", "north", "nort", "norht", "norh"}
 var northeasts = []string{"ne", "northeast", "norhteast", "norteast", "norheast", "norhteas", "norteas", "norheas"}
 var easts = []string{"e", "east", "eas"}
@@ -40,11 +43,31 @@ func init() {
 }
 
 func (p AdventureBot) Load() {
-	//RegisterRequirements("../src/github.com/cptspacetoaster/adventurebot/requirements")
+	RegisterRequirements("../src/github.com/cptspacetoaster/adventurebot/requirements")
 	RegisterActions("../src/github.com/cptspacetoaster/adventurebot/actions")
 	RegisterWidgets("../src/github.com/cptspacetoaster/adventurebot/widgets")
 	RegisterItems("../src/github.com/cptspacetoaster/adventurebot/items")
 	RegisterRooms("../src/github.com/cptspacetoaster/adventurebot/rooms")
+}
+
+func RegisterRequirements(dirloc string) {
+	fmt.Println("Registering Requirements")
+
+	names := getDirNames(dirloc)
+
+	for _, element := range names {
+		input, err2 := ioutil.ReadFile(dirloc + "/" + element)
+		if err2 != nil {
+			fmt.Println("Could not read " + element)
+		} else {
+			var r Requirement
+			json.Unmarshal(input, &r)
+			if r.Name != "" {
+				Requirements[r.Name] = r
+				//fmt.Println("Loaded: " + r.Name)
+			}
+		}
+	}
 }
 
 func RegisterActions(dirloc string) {
@@ -61,7 +84,10 @@ func RegisterActions(dirloc string) {
 			json.Unmarshal(input, &a)
 			if a.ID != "" {
 				for _, s := range a.Commands {
-					Verbs[s] = a.ID
+					Verbs[s] = append(Verbs[s], a.ID)
+				}
+				for _, s := range a.Adverbs {
+					Verbs[s] = append(Adverbs[s], a.ID)
 				}
 				Actions[a.ID] = a
 				//fmt.Println("Loaded: " + a.ID)
@@ -84,7 +110,7 @@ func RegisterWidgets(dirloc string) {
 			json.Unmarshal(input, &w)
 			if w.ID != "" {
 				for _, s := range w.Names {
-					Nouns[s] = w.ID
+					Nouns[s] = append(Nouns[s], w.ID)
 				}
 				Widgets[w.ID] = w
 				//fmt.Println("Loaded: " + w.ID)
@@ -107,7 +133,7 @@ func RegisterItems(dirloc string) {
 			json.Unmarshal(input, &i)
 			if i.ID != "" {
 				for _, s := range i.Names {
-					Nouns[s] = i.ID
+					Nouns[s] = append(Nouns[s], i.ID)
 				}
 				Items[i.ID] = i
 				//fmt.Println("Loaded: " + i.ID)
@@ -130,13 +156,21 @@ func RegisterRooms(dirloc string) {
 			json.Unmarshal(input, &r)
 			if r.ID != "" {
 				for _, s := range r.Names {
-					Nouns[s] = r.ID
+					Nouns[s] = append(Nouns[s], r.ID)
+				}
+				for _, s := range r.Adjectives {
+					Adjectives[s] = append(Adjectives[s], r.ID)
 				}
 				Rooms[r.ID] = r
 				//fmt.Println("Loaded: " + r.ID)
 			}
 		}
 	}
+
+	fmt.Println(Nouns)
+	fmt.Println(" ")
+	fmt.Println(" ")
+	fmt.Println(Verbs)
 }
 
 func getDirNames(dirloc string) (names []string) {
@@ -182,23 +216,78 @@ func (p AdventureBot) DeferredAction(command *SlashCommand) {
 	//RLock
 	player := Players[command.User_Name]
 	//RUnlock
-	action := StringParse(command.Text)
+
+	//remove any question marks, split strings by spaces
+	input := strings.Split(strings.Trim(strings.Trim(strings.ToLower(command.Text), "?"), " "), " ")
+	//create new arrays to filter user input
+	nouns := make([]string, 0)
+	adjectives := make([]string, 0)
+	verbs := make([]string, 0)
+	adverbs := make([]string, 0)
+
+	for _, s := range input {
+		if _, exist := Nouns[s]; exist {
+			nouns = append(nouns, s)
+		}
+		if _, exist := Adjectives[s]; exist {
+			adjectives = append(adjectives, s)
+		}
+		if _, exist := Verbs[s]; exist {
+			verbs = append(verbs, s)
+		}
+		if _, exist := Adverbs[s]; exist {
+			adverbs = append(adverbs, s)
+		}
+	}
+
+	action := ""
+	//parse through verbs and adverbs to determine which ones the user was talking about
+	for _, v := range verbs {
+		//For each local verb the user types
+		for _, s := range Verbs[v] {
+			//get all of the Verbs in the Verb Map that match
+			if len(adverbs) == 0 {
+				//the user did not type an adverb... use the the matching verb
+				action = s
+				break
+			} else {
+				//user DID type an adverb... what did they want?
+				for _, a := range adverbs {
+					fmt.Println(">")
+					//look at each adverb the user typed, and use entries in Actions[] to match
+					if len(Actions[s].Adverbs) == 0 {
+						fmt.Println("2")
+						//there are no adverbs in the Verb Map to help decide, we'll take the given verb
+						action = s
+						break
+					} else {
+						fmt.Println(len(Actions[s].Adverbs))
+						//If there is an adverb though, we'll use it instead
+						if StringInSlice(a, Actions[s].Adverbs) {
+							//The last match will be used
+							action = s
+							break
+						}
+					}
+				}
+			}
+		}
+	}
 	fmt.Println(action)
 
-	if action[0] == "look" {
+	if action == "look" {
 		SayDesc(Rooms[player.Location])
-	} else if StringInSlice(action[0], movement) && len(action) >= 2 {
-		//smash room name together
+	} else if action == "move" {
+		//smash room name together TODO
 		var target = ""
-		for index, s := range action {
-			if index == len(action)-1 {
+		for index, s := range input {
+			if index == len(input)-1 {
 				target += s
 			} else if index > 0 {
 				target += s + " "
 			}
 		}
-		fmt.Println(Rooms[player.Location])
-		fmt.Println("-" + target + "-")
+		//fmt.Println("-" + target + "-")
 		//check for compass directions
 		if StringInSlice(target, norths) {
 			if Rooms[player.Location].North != "" {
@@ -255,9 +344,9 @@ func (p AdventureBot) DeferredAction(command *SlashCommand) {
 		}
 		//check for adjacent rooms
 		for _, r := range Rooms[player.Location].Adjacent {
-			fmt.Print("Looking at " + r)
+			//fmt.Print("Looking at " + r)
 			if _, exist := Rooms[r]; exist {
-				fmt.Println(" Found!")
+				//fmt.Println(" Found!")
 				if StringInSlice(target, Rooms[r].Names) {
 					player = move(player, Rooms[r])
 					target = ""
@@ -267,7 +356,7 @@ func (p AdventureBot) DeferredAction(command *SlashCommand) {
 		}
 		//Can't go there
 		if target != "" {
-			Say(fmt.Sprintf("%s can not %s there", player.Name, action[0]))
+			Say(fmt.Sprintf("%s can not %s there", player.Name, input[0]))
 		}
 
 	} else {
@@ -310,20 +399,6 @@ func StringInSlice(a string, list []string) bool {
 		}
 	}
 	return false
-}
-
-func StringParse(in string) []string {
-	//remove any question marks, split strings by spaces
-	action := strings.Split(strings.Trim(strings.Trim(strings.ToLower(in), "?"), " "), " ")
-	//create a new array
-	out := make([]string, 0)
-	//fill it in order, while stilling elements in the filter.
-	for _, s := range action {
-		if !StringInSlice(s, filter) {
-			out = append(out, s)
-		}
-	}
-	return out
 }
 
 func (p AdventureBot) Description() (description string) {

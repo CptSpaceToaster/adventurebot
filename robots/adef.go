@@ -9,6 +9,7 @@ type Player struct {
 
 type Room struct {
 	Names       []string `json:"names"`
+	Adjectives  []string `json:"adjectives,omitempty"`
 	ID          string   `json:"id"`
 	Description string   `json:"description"`
 	Parent      string   `json:"parent,omitempty"`
@@ -47,8 +48,9 @@ type Widget struct {
 
 type Action struct {
 	Commands []string      `json:"commands"`
+	Adverbs  []string      `json:"adverbs,omitempty"`
 	ID       string        `json:"id"`
-	Result   string        `json:"result"`
+	Result   string        `json:"result,omitempty"`
 	Teleport string        `json:"teleport,omitempty"`
 	Requires []Requirement `json:"requires,omitempty"`
 	Gives    []string      `json:"gives,omitempty"`

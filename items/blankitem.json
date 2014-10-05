@@ -1,5 +1,11 @@
 {
-    "name": "blankitem",
+    "names": [
+        "Blank Item"
+    ],
+    "id": "blankitem",
     "description": "Probably one of those super trinket thingies",
-    "amount": 1
+    "amount": 1,
+    "actions": [
+        ""
+    ]
 }
