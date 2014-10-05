@@ -13,6 +13,11 @@ var Players = make(map[string]Player)
 var Items = make(map[string]Item)
 var Rooms = make(map[string]Room)
 var Widgets = make(map[string]Widget)
+var Actions = make(map[string]Action)
+var Requirements = make(map[string]Requirement)
+
+var Verbs = make(map[string]string)
+var Nouns = make(map[string]string)
 
 var filter = []string{"around", "by", "near", "towards", "to", "the", "a", "an", "on", "in"}
 var movement = []string{"go", "move", "walk", "frollic", "climb", "travel", "crawl", "roll", "skip", "stumble", "meander", "cartwheel"}
@@ -35,37 +40,118 @@ func init() {
 }
 
 func (p AdventureBot) Load() {
-	fmt.Println("Loading File Configurations")
+	//RegisterRequirements("../src/github.com/cptspacetoaster/adventurebot/requirements")
+	RegisterActions("../src/github.com/cptspacetoaster/adventurebot/actions")
+	RegisterWidgets("../src/github.com/cptspacetoaster/adventurebot/widgets")
+	RegisterItems("../src/github.com/cptspacetoaster/adventurebot/items")
 	RegisterRooms("../src/github.com/cptspacetoaster/adventurebot/rooms")
 }
 
-func RegisterRooms(roomdirloc string) {
-	fmt.Println("Registering Rooms")
-	roomdir, err0 := os.Open(roomdirloc)
-	if err0 != nil {
-		fmt.Println("rooms directory is missing")
-		os.Exit(1)
-	}
+func RegisterActions(dirloc string) {
+	fmt.Println("Registering Actions")
 
-	names, err1 := roomdir.Readdirnames(0)
-	if err1 != nil {
-		fmt.Println("directory names could not be read")
-		os.Exit(1)
-	}
+	names := getDirNames(dirloc)
 
 	for _, element := range names {
-		input, err2 := ioutil.ReadFile(roomdirloc + "/" + element)
+		input, err2 := ioutil.ReadFile(dirloc + "/" + element)
+		if err2 != nil {
+			fmt.Println("Could not read " + element)
+		} else {
+			var a Action
+			json.Unmarshal(input, &a)
+			if a.ID != "" {
+				for _, s := range a.Commands {
+					Verbs[s] = a.ID
+				}
+				Actions[a.ID] = a
+				//fmt.Println("Loaded: " + a.ID)
+			}
+		}
+	}
+}
+
+func RegisterWidgets(dirloc string) {
+	fmt.Println("Registering Widgets")
+
+	names := getDirNames(dirloc)
+
+	for _, element := range names {
+		input, err2 := ioutil.ReadFile(dirloc + "/" + element)
+		if err2 != nil {
+			fmt.Println("Could not read " + element)
+		} else {
+			var w Widget
+			json.Unmarshal(input, &w)
+			if w.ID != "" {
+				for _, s := range w.Names {
+					Nouns[s] = w.ID
+				}
+				Widgets[w.ID] = w
+				//fmt.Println("Loaded: " + w.ID)
+			}
+		}
+	}
+}
+
+func RegisterItems(dirloc string) {
+	fmt.Println("Registering Items")
+
+	names := getDirNames(dirloc)
+
+	for _, element := range names {
+		input, err2 := ioutil.ReadFile(dirloc + "/" + element)
+		if err2 != nil {
+			fmt.Println("Could not read " + element)
+		} else {
+			var i Item
+			json.Unmarshal(input, &i)
+			if i.ID != "" {
+				for _, s := range i.Names {
+					Nouns[s] = i.ID
+				}
+				Items[i.ID] = i
+				//fmt.Println("Loaded: " + i.ID)
+			}
+		}
+	}
+}
+
+func RegisterRooms(dirloc string) {
+	fmt.Println("Registering Rooms")
+
+	names := getDirNames(dirloc)
+
+	for _, element := range names {
+		input, err2 := ioutil.ReadFile(dirloc + "/" + element)
 		if err2 != nil {
 			fmt.Println("Could not read " + element)
 		} else {
 			var r Room
 			json.Unmarshal(input, &r)
 			if r.ID != "" {
+				for _, s := range r.Names {
+					Nouns[s] = r.ID
+				}
 				Rooms[r.ID] = r
 				//fmt.Println("Loaded: " + r.ID)
 			}
 		}
 	}
+}
+
+func getDirNames(dirloc string) (names []string) {
+	dir, err0 := os.Open(dirloc)
+	if err0 != nil {
+		fmt.Println(fmt.Sprintf("%s directory is missing", dirloc))
+		os.Exit(1)
+	}
+
+	names, err1 := dir.Readdirnames(0)
+	if err1 != nil {
+		fmt.Println("directory names could not be read")
+		os.Exit(1)
+	}
+	return
 }
 
 func RegisterPlayer(name string) (player Player) {
