@@ -1,0 +1,13 @@
+{
+    "Names": [
+        "w",
+        "west",
+        "wes"
+    ],
+    "ID": "wests",
+    "Description": "Dummy room for moving west",
+
+    "Has_Ceiling": false,
+    "Has_Floor": false,
+    "Is_Outside": false,
+}

@@ -1,0 +1,18 @@
+{
+    "Names": [
+        "ne",
+        "northeast",
+        "norteast",
+        "norhteast",
+        "norheast",
+        "norteas",
+        "norhteas",
+        "norheas"
+    ],
+    "ID": "northeasts",
+    "Description": "Dummy room for moving northeast",
+
+    "Has_Ceiling": false,
+    "Has_Floor": false,
+    "Is_Outside": false,
+}

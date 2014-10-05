@@ -1,0 +1,18 @@
+{
+    "Names": [
+        "nw",
+        "northwest",
+        "nortwest",
+        "norhtwest",
+        "norhwest",
+        "nortwes",
+        "norhtwes",
+        "norhwes"
+    ],
+    "ID": "northwests",
+    "Description": "Dummy room for moving northwest",
+
+    "Has_Ceiling": false,
+    "Has_Floor": false,
+    "Is_Outside": false,
+}

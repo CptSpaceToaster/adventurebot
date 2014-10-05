@@ -1,0 +1,15 @@
+{
+    "Names": [
+        "n",
+        "north",
+        "nort",
+        "norht",
+        "norh"
+    ],
+    "ID": "norths",
+    "Description": "Dummy room for moving north",
+
+    "Has_Ceiling": false,
+    "Has_Floor": false,
+    "Is_Outside": false,
+}
