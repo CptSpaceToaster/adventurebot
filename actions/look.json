@@ -1,0 +1,9 @@
+{
+    "commands": [
+        "look",
+        "gaze",
+        "stare",
+        "investigate"
+    ],
+    "id": "look"
+}

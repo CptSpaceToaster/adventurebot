@@ -1,0 +1,18 @@
+{
+    "commands": [
+        "go",
+        "walk",
+        "move",
+        "run",
+        "frollic",
+        "climb",
+        "travel",
+        "crawl",
+        "roll",
+        "skip",
+        "stumble",
+        "meander",
+        "cartwheel"
+    ],
+    "id": "move"
+}
