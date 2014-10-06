@@ -163,6 +163,8 @@ func RegisterRooms(dirloc string) {
 				}
 				Rooms[r.ID] = r
 				//fmt.Println("Loaded: " + r.ID)
+			} else {
+				fmt.Println("Warning: " + element + " could not be read.")
 			}
 		}
 	}
@@ -332,6 +334,7 @@ func (p AdventureBot) DeferredAction(command *SlashCommand) {
 				}
 			} else if Nouns[nouns[0]][0] == "souths" {
 				if Rooms[player.Location].South != "" {
+
 					player = move(player, Rooms[Rooms[player.Location].South])
 				}
 			} else if Nouns[nouns[0]][0] == "southwests" {
@@ -376,13 +379,13 @@ func (p AdventureBot) DeferredAction(command *SlashCommand) {
 				} else {
 					if len(adjectives) == 0 {
 						Say(fmt.Sprintf("There is more than one type of %s nearby!", nouns[0]))
-					}
-
-					for _, r := range candidates {
-						if StringInSlice(adjectives[0], r.Adjectives) {
-							//the user typed in a valid adjacent noun
-							player = move(player, r)
-							break
+					} else {
+						for _, r := range candidates {
+							if StringInSlice(adjectives[0], r.Adjectives) {
+								//the user typed in a valid adjacent noun
+								player = move(player, r)
+								break
+							}
 						}
 					}
 				}
@@ -424,7 +427,7 @@ func move(p Player, r Room) Player {
 }
 
 func SayDesc(r Room) {
-	Say(r.Names[0] + "\n______________________________________________\n" + r.Description)
+	Say(r.Display_Name + "\n______________________________________________\n" + r.Description)
 }
 
 func Say(text string) {

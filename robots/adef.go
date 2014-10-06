@@ -8,27 +8,28 @@ type Player struct {
 }
 
 type Room struct {
-	Names       []string `json:"names"`
-	Adjectives  []string `json:"adjectives,omitempty"`
-	ID          string   `json:"id"`
-	Description string   `json:"description"`
-	Parent      string   `json:"parent,omitempty"`
-	Has_Ceiling bool     `json:"has_ceiling"`
-	Has_Floor   bool     `json:"has_floor"`
-	Is_Outside  bool     `json:"is_outside"`
-	Adjacent    []string `json:"adjacent,omitempty"`
-	North       string   `json:"north,omitempty"`
-	North_East  string   `json:"north_east,omitempty"`
-	East        string   `json:"east,omitempty"`
-	South_East  string   `json:"south_east,omitempty"`
-	South       string   `json:"south,omitempty"`
-	South_West  string   `json:"south_west,omitempty"`
-	West        string   `json:"west,omitempty"`
-	North_West  string   `json:"north_west,omitempty"`
-	Up          string   `json:"up,omitempty"`
-	Down        string   `json:"down,omitempty"`
-	Items       []string `json:"items,omitempty"`
-	Widgets     []string `json:"widgets,omitempty"`
+	Names        []string `json:"names"`
+	Adjectives   []string `json:"adjectives,omitempty"`
+	ID           string   `json:"id"`
+	Display_Name string   `json:"display_name"`
+	Description  string   `json:"description"`
+	Parent       string   `json:"parent,omitempty"`
+	Has_Ceiling  bool     `json:"has_ceiling"`
+	Has_Floor    bool     `json:"has_floor"`
+	Is_Outside   bool     `json:"is_outside"`
+	Adjacent     []string `json:"adjacent,omitempty"`
+	North        string   `json:"north,omitempty"`
+	North_East   string   `json:"north_east,omitempty"`
+	East         string   `json:"east,omitempty"`
+	South_East   string   `json:"south_east,omitempty"`
+	South        string   `json:"south,omitempty"`
+	South_West   string   `json:"south_west,omitempty"`
+	West         string   `json:"west,omitempty"`
+	North_West   string   `json:"north_west,omitempty"`
+	Up           string   `json:"up,omitempty"`
+	Down         string   `json:"down,omitempty"`
+	Items        []string `json:"items,omitempty"`
+	Widgets      []string `json:"widgets,omitempty"`
 }
 
 type Item struct {
