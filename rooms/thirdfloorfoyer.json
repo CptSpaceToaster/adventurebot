@@ -1,9 +1,13 @@
 {
+	"Adjectives": [
+		"Third"
+	],
     "Names": [
-        "Third Floor Foyer",
-		"Third Floor"
+        "Foyer",
+		"Floor"
     ],
 	"ID": "thirdfloorfoyer",
+	"Display_Name": "Third Floor Foyer",
     "Description": "You are in the foyer on the third floor of the castle.",
     "Parent": "",
     

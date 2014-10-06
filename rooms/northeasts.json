@@ -10,6 +10,7 @@
         "norheas"
     ],
     "ID": "northeasts",
+	"Display_Name": "",
     "Description": "Dummy room for moving northeast",
 
     "Has_Ceiling": false,

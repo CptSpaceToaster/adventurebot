@@ -1,8 +1,13 @@
 {
+	"Adjectives": [
+		"Torture"
+	],
     "Names": [
-        "Torture Chamber"
+        "Chamber",
+		"Room"
     ],
     "ID": "torturechamber",
+	"Display_Name": "Torture Chamber",
     "Description": "You are in the torture chamber of the dungeon in the castle.",
     "Parent": "",
     

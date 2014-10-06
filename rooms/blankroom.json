@@ -1,8 +1,12 @@
 {
+	"Adjectives" : [
+		""
+	]
     "Names": [
         ""
     ],
     "ID": "",
+	"Display_Name": "",
     "Description": "",
     "Parent": "",
 

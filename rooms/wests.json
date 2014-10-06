@@ -5,6 +5,7 @@
         "wes"
     ],
     "ID": "wests",
+	"Display_Name": "",
     "Description": "Dummy room for moving west",
 
     "Has_Ceiling": false,

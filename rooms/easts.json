@@ -5,6 +5,7 @@
         "eas"
     ],
     "ID": "easts",
+	"Display_Name": "",
     "Description": "Dummy room for moving east",
 
     "Has_Ceiling": false,

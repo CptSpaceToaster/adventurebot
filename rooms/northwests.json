@@ -10,6 +10,7 @@
         "norhwes"
     ],
     "ID": "northwests",
+	"Display_Name": "",
     "Description": "Dummy room for moving northwest",
 
     "Has_Ceiling": false,

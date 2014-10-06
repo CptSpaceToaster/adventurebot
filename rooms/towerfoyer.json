@@ -1,8 +1,12 @@
 {
+	"Adjectives": [
+		"Tower"
+	],
     "Names": [
-        "Tower Foyer"
+        "Foyer"
     ],
 	"ID": "towerfoyer",
+	"Display_Name": "Tower Foyer",
     "Description": "You are in the foyer in the tower of the castle.",
     "Parent": "",
     

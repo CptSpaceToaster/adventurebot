@@ -1,10 +1,15 @@
 {
+	"Adjectives": [
+		"Torturer's",
+		"Torturers",
+		"Torturer"
+	],
     "Names": [
-        "Torturer's Quarters",
-		"Torturers Quarters",
-		"Torturer Quarters"
+        "Quarters",
+		"Room"
     ],
     "ID": "torturerquarters",
+	"Display_Name": "Torturer's Quarters",
     "Description": "You are in the torturer quarters of the dungeon in the castle.",
     "Parent": "",
     

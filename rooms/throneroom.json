@@ -1,8 +1,12 @@
 {
+	"Adjectives": [
+		"Throne"
+	],
     "Names": [
-        "Throne Room"
+        "Room"
     ],
 	"ID": "throneroom",
+	"Display_Name": "Throne Room",
     "Description": "From here all the major rulings of the kingdom are made. Great columns flank the room, drawing the eye towards the `throne`, which rests upon an elevated dias. Behind the `throne` towering above it and rendered in stone is the emblem of the realm, the stoic flamingo. An inscription beneath the `statue` reads, 'Regal in bearing and excellent in form, the flamingo embodies the ideals of the greatest nation on earth.' Around you is the `councilofelders`, `warroom`, `solarium`, `oratory`, and the `secondfloorfoyer`.",
     "Parent": "",
     

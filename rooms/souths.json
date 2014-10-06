@@ -7,6 +7,7 @@
         "souh"
     ],
     "ID": "souths",
+	"Display_Name": "",
     "Description": "Dummy room for moving south",
 
     "Has_Ceiling": false,
