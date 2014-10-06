@@ -1,11 +1,17 @@
 {
+    "Adjectives": [
+       "Princess'"
+       "Princess's"
+       "Princesss"
+       "Princess"
+    ],
     "Names": [
-        "Princess' Room",
-		"Princess's Room",
-		"Princesss Room",
-		"Princess Room"
+        "Room",
+        "Chamber",
+        "Chambers"
     ],
 	"ID": "princessroom",
+    "Display_Name": "Princess' Room",
     "Description": "You are in the princess room in the tower of the castle.",
     "Parent": "",
     

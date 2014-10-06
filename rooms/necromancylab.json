@@ -1,8 +1,14 @@
 {
+    "Adjectives": [
+        "Necromancy"
+    ],
     "Names": [
-        Necromancy Lab"
+        "Lab",
+        "Laboratory",
+        "LEHBOHRAHTOAHREE"
     ],
     "ID": "necromancylab",
+    "Display_Name": "Necromancy Laboratory",
     "Description": "You are in the necromancy lab of the dungeon in the castle.",
     "Parent": "",
     

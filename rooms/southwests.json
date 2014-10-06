@@ -10,7 +10,7 @@
         "souhwes"
     ],
     "ID": "southwests",
-	"Display_Name": ""
+	"Display_Name": "",
     "Description": "Dummy room for moving southwest",
 
     "Has_Ceiling": false,

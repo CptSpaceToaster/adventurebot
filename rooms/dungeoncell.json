@@ -1,8 +1,12 @@
 {
+    "Adjectives": [
+        "Dungeon"
+    ],
     "Names": [
-        "Dungeon Cell"
+        "Cell"
     ],
     "ID": "dungeoncell",
+    "Display_Name": "Dungeon Cell",
     "Description": "You are in the prisoner's cell of the dungeon in the castle.",
     "Parent": "",
     

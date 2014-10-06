@@ -3,6 +3,7 @@
         "Observatory"
     ],
 	"ID": "observatory",
+    "Display_Name": "Observatory",
     "Description": "You are in the observatory of the castle.",
     "Parent": "",
     

@@ -1,8 +1,13 @@
 {
+    "Adjectives": [
+        "Green"
+    ],
     "Names": [
-        "Green House"
+        "House",
+        "Greenhouse"
     ],
 	"ID": "greenhouse",
+    "Display_Name": "Green House",
     "Description": "You are in the green house of the castle.",
     "Parent": "",
     

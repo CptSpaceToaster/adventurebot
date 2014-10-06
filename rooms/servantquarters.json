@@ -1,10 +1,15 @@
 {
+    "Adjectives": [
+        "Servant's",
+        "Servants",
+        "Servant",
+    ],
     "Names": [
-        "Servant's Quarters",
-		"Servants Quuarters",
-		"Servant Quarters"
+        "Quarters",
+        "Room"
     ],
 	"ID": "servantquarters",
+    "Display_Name": "Servant's Quarters",
     "Description": "You are in the servant quarters of the castle.",
     "Parent": "",
     

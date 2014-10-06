@@ -1,8 +1,12 @@
 {
+    "Adjectives": [
+        "Royal"
+    ],
     "Names": [
-        "Royal Bedroom"
+        "Bedroom"
     ],
 	"ID": "royalbedroom",
+    "Display_Name": "Royal Bedroom",
     "Description": "You are in the royal bedroom of the castle.",
     "Parent": "",
     

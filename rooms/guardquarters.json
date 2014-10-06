@@ -1,8 +1,15 @@
 {
+    "Adjactives": [
+        "Guard's",
+        "Guards",
+        "Guard"
+    ],
     "Names": [
-        "Guard Quarters"
+        "Quarters"
+        "Quarter"
     ],
 	"ID": "guardquarters",
+    "Display_Name": "Guard's Quarters",
     "Description": "You are in the guard quarters of the castle.",
     "Parent": "",
     

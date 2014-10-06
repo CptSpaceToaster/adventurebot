@@ -1,8 +1,15 @@
 {
+    "Adjectives": [
+        "Bottom",
+        "Lower"
+    ],
     "Names": [
-        "Dungeon Landing"
+        "Landing",
+        "Foyer",
+        "Floor"
     ],
 	"ID": "dungeonlanding",
+    "Display_Name": "Dungeon Landing",
     "Description": "You are on the landing of the dungeon in the castle.",
     "Parent": "",
     

@@ -1,10 +1,14 @@
 {
+    "Adjectives": [
+        "Magistrate's",
+        "Magistrates",
+        "Magistrate"
+    ],
     "Names": [
-        "Magistrate's Quarters",
-		"Magistrates Quarters",
-		"Magistrate Quarters"
+		"Quarters"
     ],
     "ID": "magistratequarters",
+    "Display_Name": "Magistrate's Quarters",
     "Description": "You are in the magistrate quarters in the castle.",
     "Parent": "",
     

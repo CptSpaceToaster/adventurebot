@@ -1,9 +1,11 @@
 {
 	"Adjectives": [
-		"Tower"
+		"Tower",
+        "Fourth"
 	],
     "Names": [
-        "Foyer"
+        "Foyer",
+        "Floor"
     ],
 	"ID": "towerfoyer",
 	"Display_Name": "Tower Foyer",

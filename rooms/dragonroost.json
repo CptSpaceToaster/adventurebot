@@ -1,8 +1,16 @@
 {
+    "Adjectives": [
+        "Dragon's",
+        "Dragons",
+        "Dragon"
+    ],
     "Names": [
-        "Dragon Roost"
+        "Roost",
+        "Nest",
+        "Keep"
     ],
 	"ID": "dragonroost",
+    "Display_Name": "Dragon's Roost",
     "Description": "You are in the dragon roost in the tower of the castle.",
     "Parent": "",
     

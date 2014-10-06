@@ -1,8 +1,16 @@
 {
+    "Adjectives": [
+        "Lower",
+        "First",
+        "Bottom",
+        "Basement"
+    ],
     "Names": [
-        "Basement Foyer"
+        "Foyer",
+        "Floor"
     ],
 	"ID": "basementfoyer",
+    "Display_Name": "Basement Foyer",
     "Description": "You are in the foyer in the basement of the castle.",
     "Parent": "",
     

@@ -1,8 +1,12 @@
 {
+    "Adjectives": [
+        "Alchemy"
+    ],
     "Names": [
-        "Alchemy Lab"
+        "Lab"
     ],
 	"ID": "alchemylab",
+    "Display_Name": "Alchemy Lab",
     "Description": "You are in the alchemy lab of the castle.",
     "Parent": "",
     

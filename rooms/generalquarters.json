@@ -1,8 +1,16 @@
 {
+    "Adjectives": [
+        "General's",
+        "Generals",
+        "General"
+    ],
     "Names": [
-        "General Quarters"
+        "Quarters",
+        "Quarter",
+        "Room"
     ],
     "ID": "generalquarters",
+    "Display_Name": "General Quarters",
     "Description": "You are in the general's quarters in the castle.",
     "Parent": "",
     

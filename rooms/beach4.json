@@ -1,10 +1,14 @@
 {
-    "Names" : [
-        "Southern Beach",
-        "Southern Shore",
-        "Southern Shoreline"
+    "Adjectives": [
+        "Southern"
     ],
-    "ID" : "beach4",
+    "Names" : [
+        "Beach",
+        "Shore",
+        "Shoreline"
+    ],
+    "ID": "beach4",
+    "Display_Name": "Southern Beach",
     "Description" : "You follow the beach, and the inland fields begin to jut out of the ground in a magestic shoreline.  As you walk, the sand becomes littered with pebbles, and small rocks.  The sharp rocks stop you from traveling any further `South`.  The beach extends to the `North`.",
     "Parent" : "",
 

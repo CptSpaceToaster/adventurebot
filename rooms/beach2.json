@@ -1,9 +1,13 @@
 {
-    "Names": [
-        "Northern Beach",
-        "Northern Shore",
-        "Northern Shoreline"
+    "Adjectives": [
+        "Northern"
     ],
+    "Names": [
+        "Beach",
+        "Shore",
+        "Shoreline"
+    ],
+    "Display_Name": "Northern Beach",
     "ID": "beach2",
     "Description": "The shoreline continues for quite a distance, and sand begins to wear at your feet.  You can see the bay's sheer cliffs in the distance to the `North`.  The beach continues to the `North` and `South`, and there is a large grassy field to the `East`",
     "Parent": "",

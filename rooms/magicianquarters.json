@@ -1,10 +1,14 @@
 {
+    "Adjectives": [
+        "Magician's",
+        "Magicians",
+        "Magician"
+    ],
     "Names": [
-        "Magician's Quarters",
-		"Magicians Quarters",
-		"Magician Quarters"
+		"Quarters"
     ],
     "ID": "magicianquarters",
+    "Display_Name": "Magician's Quarters",
     "Description": "You are in the magician quarters in the castle.",
     "Parent": "",
     

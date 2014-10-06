@@ -3,6 +3,7 @@
         "Armoury"
     ],
 	"ID": "armoury",
+    "Display_Name": "Armoury",
     "Description": "You are in the armoury of the castle.",
     "Parent": "",
     

@@ -1,10 +1,14 @@
 {
+    "Adjectives": [
+        "Southern"
+    ],
     "Names": [
-        "Southern Beach",
-        "Southern Shore",
-        "Southern Shoreline"
+        "Beach",
+        "Shore",
+        "Shoreline"
     ],
     "ID": "beach3",
+    "Display_Name": "Southern Beach",
     "Description": "A rather calm and relaxing shoreline.  The waves lap against the sandy shore, and remind you that if it weren't for that blasted storm, you'd actually be able to enjoy your time here in the sun, instead of trying to figure out if you'll ever make it home. The beach continues to the `North` and `South`, and there is a large grassy field to the `East`",
     "Parent": "",
 

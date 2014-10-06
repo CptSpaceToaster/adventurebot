@@ -3,6 +3,7 @@
         "Pantry"
     ],
 	"ID": "pantry",
+    "Display_Name": "Pantry",
     "Description": "You are in the pantry of the castle.",
     "Parent": "",
     
