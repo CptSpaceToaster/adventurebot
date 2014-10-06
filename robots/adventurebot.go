@@ -84,10 +84,10 @@ func RegisterActions(dirloc string) {
 			json.Unmarshal(input, &a)
 			if a.ID != "" {
 				for _, s := range a.Commands {
-					Verbs[s] = append(Verbs[s], a.ID)
+					Verbs[strings.ToLower(s)] = append(Verbs[strings.ToLower(s)], a.ID)
 				}
 				for _, s := range a.Adverbs {
-					Verbs[s] = append(Adverbs[s], a.ID)
+					Verbs[strings.ToLower(s)] = append(Adverbs[strings.ToLower(s)], a.ID)
 				}
 				Actions[a.ID] = a
 				//fmt.Println("Loaded: " + a.ID)
@@ -110,7 +110,7 @@ func RegisterWidgets(dirloc string) {
 			json.Unmarshal(input, &w)
 			if w.ID != "" {
 				for _, s := range w.Names {
-					Nouns[s] = append(Nouns[s], w.ID)
+					Nouns[strings.ToLower(s)] = append(Nouns[strings.ToLower(s)], w.ID)
 				}
 				Widgets[w.ID] = w
 				//fmt.Println("Loaded: " + w.ID)
@@ -133,7 +133,7 @@ func RegisterItems(dirloc string) {
 			json.Unmarshal(input, &i)
 			if i.ID != "" {
 				for _, s := range i.Names {
-					Nouns[s] = append(Nouns[s], i.ID)
+					Nouns[strings.ToLower(s)] = append(Nouns[strings.ToLower(s)], i.ID)
 				}
 				Items[i.ID] = i
 				//fmt.Println("Loaded: " + i.ID)
@@ -156,21 +156,35 @@ func RegisterRooms(dirloc string) {
 			json.Unmarshal(input, &r)
 			if r.ID != "" {
 				for _, s := range r.Names {
-					Nouns[s] = append(Nouns[s], r.ID)
+					Nouns[strings.ToLower(s)] = append(Nouns[strings.ToLower(s)], r.ID)
 				}
 				for _, s := range r.Adjectives {
-					Adjectives[s] = append(Adjectives[s], r.ID)
+					Adjectives[strings.ToLower(s)] = append(Adjectives[strings.ToLower(s)], r.ID)
 				}
 				Rooms[r.ID] = r
 				//fmt.Println("Loaded: " + r.ID)
 			}
 		}
 	}
-
-	fmt.Println(Nouns)
-	fmt.Println(" ")
-	fmt.Println(" ")
-	fmt.Println(Verbs)
+	/*
+		fmt.Print("\n")
+		for k, _ := range Nouns {
+			fmt.Print(k + ", ")
+		}
+		fmt.Print("\n\n")
+		for k, _ := range Adjectives {
+			fmt.Print(k + ", ")
+		}
+		fmt.Print("\n\n")
+		for k, _ := range Verbs {
+			fmt.Print(k + ", ")
+		}
+		fmt.Print("\n\n")
+		for k, _ := range Adverbs {
+			fmt.Print(k + ", ")
+		}
+		fmt.Print("\n\n")
+	*/
 }
 
 func getDirNames(dirloc string) (names []string) {
@@ -226,6 +240,7 @@ func (p AdventureBot) DeferredAction(command *SlashCommand) {
 	adverbs := make([]string, 0)
 
 	for _, s := range input {
+		//fmt.Print(s + ", ")
 		if _, exist := Nouns[s]; exist {
 			nouns = append(nouns, s)
 		}
@@ -239,6 +254,21 @@ func (p AdventureBot) DeferredAction(command *SlashCommand) {
 			adverbs = append(adverbs, s)
 		}
 	}
+	//fmt.Print("\n")
+
+	for _, s := range adverbs {
+		fmt.Print(" a: " + s)
+	}
+	for _, s := range verbs {
+		fmt.Print(" v: " + s)
+	}
+	for _, s := range adjectives {
+		fmt.Print(" a: " + s)
+	}
+	for _, s := range nouns {
+		fmt.Print(" n: " + s)
+	}
+	fmt.Print("\n")
 
 	action := ""
 	//parse through verbs and adverbs to determine which ones the user was talking about
@@ -257,7 +287,8 @@ func (p AdventureBot) DeferredAction(command *SlashCommand) {
 					//look at each adverb the user typed, and use entries in Actions[] to match
 					if len(Actions[s].Adverbs) == 0 {
 						fmt.Println("2")
-						//there are no adverbs in the Verb Map to help decide, we'll take the given verb
+						//there are no adverbs in the Verb Map to help decide,
+						//we'll take the given verb
 						action = s
 						break
 					} else {
@@ -273,95 +304,118 @@ func (p AdventureBot) DeferredAction(command *SlashCommand) {
 			}
 		}
 	}
-	fmt.Println(action)
+	//fmt.Println(action)
 
 	if action == "look" {
 		SayDesc(Rooms[player.Location])
 	} else if action == "move" {
 		//smash room name together TODO
-		var target = ""
-		for index, s := range input {
-			if index == len(input)-1 {
-				target += s
-			} else if index > 0 {
-				target += s + " "
-			}
-		}
-		//fmt.Println("-" + target + "-")
-		//check for compass directions
-		if StringInSlice(target, norths) {
-			if Rooms[player.Location].North != "" {
-				player = move(player, Rooms[Rooms[player.Location].North])
-				target = ""
-			}
-		}
-		if StringInSlice(target, northeasts) {
-			if Rooms[player.Location].North_East != "" {
-				player = move(player, Rooms[Rooms[player.Location].North_East])
-				target = ""
-			}
-		}
-		if StringInSlice(target, easts) {
-			if Rooms[player.Location].East != "" {
-				player = move(player, Rooms[Rooms[player.Location].East])
-				target = ""
-			}
-		}
-		if StringInSlice(target, southeasts) {
-			if Rooms[player.Location].South_East != "" {
-				player = move(player, Rooms[Rooms[player.Location].South_East])
-				target = ""
-			}
-		}
-		if StringInSlice(target, souths) {
-			if Rooms[player.Location].South != "" {
-				player = move(player, Rooms[Rooms[player.Location].South])
-				target = ""
-			}
-		}
-		if StringInSlice(target, southwests) {
-			if Rooms[player.Location].South_West != "" {
-				player = move(player, Rooms[Rooms[player.Location].South_West])
-				target = ""
-			}
-		}
-		if StringInSlice(target, wests) {
-			if Rooms[player.Location].West != "" {
-				player = move(player, Rooms[Rooms[player.Location].West])
-				target = ""
-			}
-		}
-		if StringInSlice(target, northwests) {
-			if Rooms[player.Location].North_West != "" {
-				player = move(player, Rooms[Rooms[player.Location].North_West])
-				target = ""
-			}
-		}
-		//check for current room
-		if StringInSlice(target, Rooms[player.Location].Names) {
-			Say(fmt.Sprintf("%s is already in the %s", player.Name, player.Location))
-			target = ""
-		}
-		//check for adjacent rooms
-		for _, r := range Rooms[player.Location].Adjacent {
-			//fmt.Print("Looking at " + r)
-			if _, exist := Rooms[r]; exist {
-				//fmt.Println(" Found!")
-				if StringInSlice(target, Rooms[r].Names) {
-					player = move(player, Rooms[r])
-					target = ""
-					break
+		//fmt.Println(nouns)
+
+		if len(nouns) > 0 {
+			//check for compass directions
+			if Rooms[nouns[0]].ID == "norths" {
+				if Rooms[player.Location].North != "" {
+					player = move(player, Rooms[Rooms[player.Location].North])
 				}
 			}
-		}
-		//Can't go there
-		if target != "" {
-			Say(fmt.Sprintf("%s can not %s there", player.Name, input[0]))
+			if Rooms[nouns[0]].ID == "northeasts" {
+				if Rooms[player.Location].North_East != "" {
+					player = move(player, Rooms[Rooms[player.Location].North_East])
+				}
+			}
+			if Rooms[nouns[0]].ID == "easts" {
+				if Rooms[player.Location].East != "" {
+					player = move(player, Rooms[Rooms[player.Location].East])
+				}
+			}
+			if Rooms[nouns[0]].ID == "southeasts" {
+				if Rooms[player.Location].South_East != "" {
+					player = move(player, Rooms[Rooms[player.Location].South_East])
+				}
+			}
+			if Rooms[nouns[0]].ID == "souths" {
+				if Rooms[player.Location].South != "" {
+					player = move(player, Rooms[Rooms[player.Location].South])
+				}
+			}
+			if Rooms[nouns[0]].ID == "southwests" {
+				if Rooms[player.Location].South_West != "" {
+					player = move(player, Rooms[Rooms[player.Location].South_West])
+				}
+			}
+			if Rooms[nouns[0]].ID == "wests" {
+				if Rooms[player.Location].West != "" {
+					player = move(player, Rooms[Rooms[player.Location].West])
+				}
+			}
+			if Rooms[nouns[0]].ID == "northwests" {
+				if Rooms[player.Location].North_West != "" {
+					player = move(player, Rooms[Rooms[player.Location].North_West])
+				}
+			}
+			//Not a compass direction, user may have typed a room name
+
+			//make a list of nearby rooms that use the noun the user typed
+			var candidates []Room
+
+			for _, r := range Rooms[player.Location].Adjacent {
+				//find all adjacent rooms
+				//fmt.Print("Looking at " + r)
+				if _, exist := Rooms[r]; exist {
+					//does the actual entry exist?
+					//fmt.Println(" Found!")
+					if StringInSlice(nouns[0], Rooms[r].Names) {
+						//the user typed in a valid adjacent noun
+						candidates = append(candidates, Rooms[r])
+					}
+				}
+			}
+
+			if len(candidates) == 0 {
+				if StringInSlice(nouns[0], Rooms[player.Location].Names) {
+					Say(fmt.Sprintf("You are already in the %s.", nouns[0]))
+				} else {
+					Say(fmt.Sprintf("You can not make it to the %s from here.", nouns[0]))
+				}
+			} else if len(candidates) == 1 {
+				player = move(player, candidates[0])
+			} else {
+				if len(adjectives) == 0 {
+					Say(fmt.Sprintf("There is more than one type of %s nearby!", nouns[0]))
+				}
+
+				for _, r := range candidates {
+					if StringInSlice(adjectives[0], r.Adjectives) {
+						//the user typed in a valid adjacent noun
+						player = move(player, r)
+						break
+					}
+				}
+			}
+
+		} else {
+			//user didn't tell me where to go
+			Say("I do not know where you are trying to go.")
 		}
 
+		//check for current room
+		//fmt.Println(Rooms[player.Location])
+		/*
+			if StringInSlice(target, Rooms[player.Location].Names) {
+				Say(fmt.Sprintf("%s is already in the %s", player.Name, player.Location))
+				target = ""
+			}
+			//check for adjacent rooms
+			//Can't go there
+			if target != "" {
+				Say(fmt.Sprintf("%s can not %s there", player.Name, input[0]))
+			}
+		*/
 	} else {
 		Say(fmt.Sprintf("I do not understand what %s is trying to say", command.User_Name))
 	}
+
 	//Lock
 	Players[player.Name] = player //Update the instance of the player in Players
 	//Unlock
