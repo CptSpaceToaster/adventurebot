@@ -9,7 +9,7 @@ Schema  - `go get github.com/gorilla/schema`
 
 Installation
 ============
-Is this your first project in GO?  You might find [this introduction](https://github.com/CptSpaceToaster/adventurebot/INSTALLATION_NOTES.md) useful
+Is this your first project in GO?  You might find [this introduction](https://github.com/CptSpaceToaster/adventurebot/blob/master/INSTALLATION_NOTES.md) useful
 
 `go get github.com/cptspacetoaster/adventurebot`  
 
