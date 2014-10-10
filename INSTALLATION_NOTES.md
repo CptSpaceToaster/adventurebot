@@ -12,18 +12,18 @@ Currently, apt-get hands 'buntu users an older version, I'm not sure about the s
 
 Pull a tarball from [Go's download page](http://golang.org/dl/) and follow their [installation instructions](http://golang.org/doc/install) up until you can type `go version` or `go help`
 
-`export VERSION='1.3.3'`
-`export OS='linux'`
-`export ARCH='amd64'`
+`export VERSION='1.3.3'`  
+`export OS='linux'`  
+`export ARCH='amd64'`  
 
-`wget golang.org/dl/go$VERSION.$OS-$ARCH.tar.gz`
-`sudo tar -C /usr/local -xzf go$VERSION.$OS-$ARCH.tar.gz`
-`export PATH=$PATH:/usr/local/go/bin` - You probably want this in your .profile
-Make sure to create a directory to store your go-projects, **and** set the `$GOPATH` to the location of the the directory you create~
-`mkdir ~/go-proj-dir`
-`export GOPATH=~/go-proj-dir` - Probably want this in you .profile as well
-Check to see if the tool exists!
-`go version`
+`wget golang.org/dl/go$VERSION.$OS-$ARCH.tar.gz`  
+`sudo tar -C /usr/local -xzf go$VERSION.$OS-$ARCH.tar.gz`  
+`export PATH=$PATH:/usr/local/go/bin` - You probably want this in your .profile  
+Make sure to create a directory to store your go-projects, **and** set the `$GOPATH` to the location of the the directory you create~  
+`mkdir ~/go-proj-dir`  
+`export GOPATH=~/go-proj-dir` - Probably want this in you .profile as well  
+Check to see if the tool exists!  
+`go version`  
 `> go version go1.3.3 linux/amd64`
 
 If you're interested diving into go, you may want to mess around with the further steps and create everyone's favorite "hello world" program, but I'll leave the initial tinkering as an excessive for those who care.
@@ -42,9 +42,9 @@ Go wrapped the acquisition of projects and repositories using the command `go ge
 
 Complain if you want to... but this should mean all projects can rely on developers having the same folder structure within their `$GOPATH`.  Dependencies just work...
 
-For this project, you'd need both:
-`go get github.com/gorilla/schema`
-`go get github.com/cptspacetoaster/adventurebot`
+For this project, you'd need both:  
+`go get github.com/gorilla/schema`  
+`go get github.com/cptspacetoaster/adventurebot`  
 
 Don't download them in reverse order...
 
