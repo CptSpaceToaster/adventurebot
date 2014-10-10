@@ -5,7 +5,7 @@ Go (usually referred to as 'golang' on the internet for all intensive porpoises)
 
 Installing the Go Toolset
 ========
-You will be prefacing most of evertying you accomplish in go by invoking `go <command> <arguments>` (big surprise right?!?)
+You will be prefacing most of everthing you accomplish in go by invoking `go <command> <arguments>` (big surprise right?!?)
 
 To do that, you'll need to install go tools (at least version 1.3.1).
 Currently, apt-get hands 'buntu users an older version, I'm not sure about the state of other package managers, but manually installing isn't bad
