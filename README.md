@@ -25,9 +25,9 @@ Create a config file (config.json) in `$GOPATH/bin` with the following format:
 }
 ```
 
-Make sure you have [Incoming Webhooks](https://my.slack.com/services/new/incoming-webhook) enabled and you are using that integration token for your config. (hard set for patterns that begin with question-mark's at the moment)
+Make sure you have [Incoming Webhooks](https://slack.com/services/new/incoming-webhook) enabled and you are using that integration token for your config. (hard set for patterns that begin with question-mark's at the moment)
 
-Adventurebot will respond to an [Outgoing Webhook](https://gengo.slack.com/services/new/outgoing-webhook).
+Adventurebot will respond to an [Outgoing Webhook](https://slack.com/services/new/outgoing-webhook).
 
 TODO: Lots
 
@@ -37,7 +37,7 @@ Adding Rooms, and other configurations
 TODO:
 copy the blank<thing>.json and fill in the fields... more to come, and I'm not completely finished with the formatting at the moment.
 
-Running
+Running the Executable
 =======
 `cd $GOPATH/bin`  
 `./adventurebot`
