@@ -19,9 +19,9 @@ Pull a tarball from [Go's download page](http://golang.org/dl/) and follow their
 `wget golang.org/dl/go$VERSION.$OS-$ARCH.tar.gz`  
 `sudo tar -C /usr/local -xzf go$VERSION.$OS-$ARCH.tar.gz`  
 `export PATH=$PATH:/usr/local/go/bin` - You probably want this in your .profile  
-Make sure to create a directory to store your go-projects, **and** set the `$GOPATH` to the location of the the directory you create~  
+Make sure to create a directory to store your go-projects, **and** set the `$GOPATH` to the location of the the directory you create  
 `mkdir ~/go-proj-dir`  
-`export GOPATH=~/go-proj-dir` - Probably want this in you .profile as well  
+`export GOPATH=~/go-proj-dir` - Probably want this in your .profile as well  
 Check to see if the tool exists!  
 `go version`  
 `> go version go1.3.3 linux/amd64`
@@ -55,10 +55,10 @@ Build Stuff!
 ========
 Guess what?  When you ran `go get` you should have automagically built the executable that the project generates!
 
-Did you make changes to the source?  Rebuild a project using `go install <project>` (Assuming the project you pulled was stable)
-`go install github.com/cptspacetoaster/adventurebot`
+Did you make changes to the source?  Rebuild a project using `go install <project>` (Assuming the project you pulled was stable)  
+`go install github.com/cptspacetoaster/adventurebot`  
 
-Your executable(s) can be found here:
-`cd $GOPATH/bin`
+Your executable(s) can be found here:  
+`cd $GOPATH/bin`  
 
 Now head back to the mainpage to finish reading that [README](https://github.com/CptSpaceToaster/adventurebot)... you're only a configuration file away!
