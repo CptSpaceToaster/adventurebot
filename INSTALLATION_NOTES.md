@@ -26,7 +26,7 @@ Check to see if the tool exists!
 `go version`  
 `> go version go1.3.3 linux/amd64`
 
-If you're interested diving into go, you may want to mess around with the further steps and create everyone's favorite "hello world" program, but I'll leave the initial tinkering as an excessive for those who care.
+If you're interested diving into go, you may want to follow further steps and create everyone's favorite "hello world" program.  I'll leave the initial tinkering as an excersize for those who care.
 
 More information: `go help` especially `go help gopath`
 
