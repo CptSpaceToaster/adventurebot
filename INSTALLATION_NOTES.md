@@ -61,4 +61,4 @@ Did you make changes to the source?  Rebuild a project using `go install <projec
 Your executable(s) can be found here:  
 `cd $GOPATH/bin`  
 
-Now head back to the mainpage to finish reading that [README](https://github.com/CptSpaceToaster/adventurebot)... you're only a configuration file away!
+Now head back to the main page to finish reading that [README](https://github.com/CptSpaceToaster/adventurebot)... you're only a configuration file away!
