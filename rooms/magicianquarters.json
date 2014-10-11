@@ -9,7 +9,7 @@
     ],
     "ID": "magicianquarters",
     "Display_Name": "Magician's Quarters",
-    "Description": "You are in the magician quarters in the castle.",
+    "Description": "You are in the magician quarters in the castle.  The last person to have lived here, presumably a magician, must have been a disorganized fellow.  Several 'papers' are scattered across the floor.  On the far wall is a bookshelf with several 'books'.  Next to the bookshelf is a locked storage locker.  The 'lock' looks quite rusty.",
     "Parent": "",
     
     "Has_Ceiling": true,
@@ -36,9 +36,10 @@
     "Down": "",
     
     "Items": [
-    ""
+    "papers",
+	"books"
     ],  
     "Widgets": [
-    ""
+    "lock"
     ]
 }

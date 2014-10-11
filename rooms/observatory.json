@@ -4,7 +4,7 @@
     ],
 	"ID": "observatory",
     "Display_Name": "Observatory",
-    "Description": "You are in the observatory of the castle.",
+    "Description": "The walls of the room are lined with 'star charts' with maps of the night sky.  Many constellations have been outlined on these maps, but you do not recognize any of them.  In the center of the room is a small 'telescope', propped up by a tripod stand.  On the far side of the room is a 'wheel', connected to a contraption on the ceiling",
     "Parent": "",
     
     "Has_Ceiling": true,
@@ -29,7 +29,8 @@
     "Down": "",
     
     "Items": [
-	""
+	"star charts",
+	"telescope"
 	],	
     "Widgets": [
 	""

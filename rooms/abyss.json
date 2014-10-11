@@ -4,7 +4,7 @@
     ],
     "ID": "abyss",
     "Display_Name": "Abyss",
-    "Description": "You are by an abyss.",
+    "Description": "An abyss of unknown depth has been hewn from the stone floor of the cavern.  There is a decrepit wooden 'fence' near the edge, which has several person sized gaps in it.  The stone floor of the cavern is nearly bare, with a few 'rocks' and 'planks' strewn about",
     "Parent": "",
     
     "Has_Ceiling": true,
@@ -30,7 +30,8 @@
     "Down": "",
     
     "Items": [
-    ""
+    "rock",
+	"planks"
     ],  
     "Widgets": [
     ""
