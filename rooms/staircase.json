@@ -5,7 +5,7 @@
     ],
 	"ID": "staircase",
 	"Display_Name": "Staircase",
-    "Description": "The grand `staircase` of the castle traverses the heighth of the structure. Plush carpet softens your steps. A circling limestone `banister` is smooth and cool to the touch. From here you can clearly see that you have access to the `dungeonlanding`, `basementfoyer`, `mainfloorfoyer`, `secondfloorfoyer`, thirdfloorfoyer`, and `towerfoyer`.",
+    "Description": "The grand `staircase` of the castle traverses the height of the structure. Plush carpet softens your steps. A circling limestone `banister` is smooth and cool to the touch. From here you can clearly see that you have access to the `dungeonlanding`, `basementfoyer`, `mainfloorfoyer`, `secondfloorfoyer`, thirdfloorfoyer`, and `towerfoyer`.",
     "Parent": "",
     
     "Has_Ceiling": true,
