@@ -1,6 +1,7 @@
 {
     "Names": [
-        "Staircase"
+        "Staircase",
+        "Stairs"
     ],
 	"ID": "staircase",
 	"Display_Name": "Staircase",
