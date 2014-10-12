@@ -1,0 +1,13 @@
+{
+    "Names": [
+        "up",
+        "above"
+    ],
+    "ID": "ups",
+	"Display_Name": "",
+    "Description": "Dummy room for moving up",
+
+    "Has_Ceiling": false,
+    "Has_Floor": false,
+    "Is_Outside": false
+}

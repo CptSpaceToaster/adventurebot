@@ -1,0 +1,13 @@
+{
+    "Names": [
+        "down",
+        "below"
+    ],
+    "ID": "downs",
+	"Display_Name": "",
+    "Description": "Dummy room for moving down",
+
+    "Has_Ceiling": false,
+    "Has_Floor": false,
+    "Is_Outside": false
+}

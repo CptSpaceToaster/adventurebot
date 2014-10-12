@@ -1,0 +1,12 @@
+{
+    "Names": [
+        "back"
+    ],
+    "ID": "backs",
+	"Display_Name": "",
+    "Description": "Dummy room for moving back (to the last room you were in)",
+
+    "Has_Ceiling": false,
+    "Has_Floor": false,
+    "Is_Outside": false
+}

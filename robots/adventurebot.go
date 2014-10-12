@@ -24,14 +24,14 @@ var Adverbs = make(map[string][]string)
 //var filter = []string{"around", "by", "near", "towards", "to", "the", "a", "an", "on", "in"}
 
 //var movement = []string{"go", "move", "walk", "frollic", "climb", "travel", "crawl", "roll", "skip", "stumble", "meander", "cartwheel"}
-var norths = []string{"n", "north", "nort", "norht", "norh"}
-var northeasts = []string{"ne", "northeast", "norhteast", "norteast", "norheast", "norhteas", "norteas", "norheas"}
-var easts = []string{"e", "east", "eas"}
-var southeasts = []string{"se", "southeast", "souhteast", "souteast", "souheast", "souhteas", "souteas", "souheas"}
-var souths = []string{"s", "south", "sout", "souht", "souh"}
-var southwests = []string{"sw", "southwest", "souhtwest", "soutwest", "souhwest", "souhtwes", "soutwes", "souhwes"}
-var wests = []string{"w", "west", "wes"}
-var northwests = []string{"nw", "northwest", "norhtwest", "nortwest", "norhwest", "norhtwes", "nortwes", "norhwes"}
+//var norths = []string{"n", "north", "nort", "norht", "norh"}
+//var northeasts = []string{"ne", "northeast", "norhteast", "norteast", "norheast", "norhteas", "norteas", "norheas"}
+//var easts = []string{"e", "east", "eas"}
+//var southeasts = []string{"se", "southeast", "souhteast", "souteast", "souheast", "souhteas", "souteas", "souheas"}
+//var souths = []string{"s", "south", "sout", "souht", "souh"}
+//var southwests = []string{"sw", "southwest", "souhtwest", "soutwest", "souhwest", "souhtwes", "soutwes", "souhwes"}
+//var wests = []string{"w", "west", "wes"}
+//var northwests = []string{"nw", "northwest", "norhtwest", "nortwest", "norhwest", "norhtwes", "nortwes", "norhwes"}
 
 type AdventureBot struct {
 }
@@ -148,23 +148,28 @@ func RegisterRooms(dirloc string) {
 	names := getDirNames(dirloc)
 
 	for _, element := range names {
-		input, err2 := ioutil.ReadFile(dirloc + "/" + element)
-		if err2 != nil {
-			fmt.Println("Could not read " + element)
+
+		if isDir, _ := IsDirectory(dirloc + "/" + element); isDir {
+			RegisterRooms(dirloc + "/" + element)
 		} else {
-			var r Room
-			json.Unmarshal(input, &r)
-			if r.ID != "" {
-				for _, s := range r.Names {
-					Nouns[strings.ToLower(s)] = append(Nouns[strings.ToLower(s)], r.ID)
-				}
-				for _, s := range r.Adjectives {
-					Adjectives[strings.ToLower(s)] = append(Adjectives[strings.ToLower(s)], r.ID)
-				}
-				Rooms[r.ID] = r
-				//fmt.Println("Loaded: " + r.ID)
+			input, err2 := ioutil.ReadFile(dirloc + "/" + element)
+			if err2 != nil {
+				fmt.Println("Could not read " + element)
 			} else {
-				fmt.Println("Warning: " + element + " could not be read.")
+				var r Room
+				json.Unmarshal(input, &r)
+				if r.ID != "" {
+					for _, s := range r.Names {
+						Nouns[strings.ToLower(s)] = append(Nouns[strings.ToLower(s)], r.ID)
+					}
+					for _, s := range r.Adjectives {
+						Adjectives[strings.ToLower(s)] = append(Adjectives[strings.ToLower(s)], r.ID)
+					}
+					Rooms[r.ID] = r
+					fmt.Println("Loaded: " + r.ID)
+				} else {
+					fmt.Println("Warning: " + element + " could not be read.")
+				}
 			}
 		}
 	}
@@ -187,6 +192,11 @@ func RegisterRooms(dirloc string) {
 		}
 		fmt.Print("\n\n")
 	*/
+}
+
+func IsDirectory(path string) (bool, error) {
+	fileInfo, err := os.Stat(path)
+	return fileInfo.IsDir(), err
 }
 
 func getDirNames(dirloc string) (names []string) {
@@ -311,9 +321,6 @@ func (p AdventureBot) DeferredAction(command *SlashCommand) {
 	if action == "look" {
 		SayDesc(Rooms[player.Location])
 	} else if action == "move" {
-		//smash room name together TODO
-		//fmt.Println(nouns)
-
 		if len(nouns) > 0 {
 			//check for compass directions
 			if Nouns[nouns[0]][0] == "norths" {
@@ -348,6 +355,18 @@ func (p AdventureBot) DeferredAction(command *SlashCommand) {
 			} else if Nouns[nouns[0]][0] == "northwests" {
 				if Rooms[player.Location].North_West != "" {
 					player = move(player, Rooms[Rooms[player.Location].North_West])
+				}
+			} else if Nouns[nouns[0]][0] == "ups" {
+				if Rooms[player.Location].Up != "" {
+					player = move(player, Rooms[Rooms[player.Location].Up])
+				}
+			} else if Nouns[nouns[0]][0] == "downs" {
+				if Rooms[player.Location].Down != "" {
+					player = move(player, Rooms[Rooms[player.Location].Down])
+				}
+			} else if Nouns[nouns[0]][0] == "backs" {
+				if player.Location != player.Last_Location {
+					player = move(player, Rooms[player.Last_Location])
 				}
 			} else {
 				//Not a compass direction, user may have typed a room name
