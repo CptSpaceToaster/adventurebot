@@ -325,47 +325,69 @@ func (p AdventureBot) DeferredAction(command *SlashCommand) {
 			if Nouns[nouns[0]][0] == "norths" {
 				if Rooms[player.Location].North != "" {
 					player = move(player, Rooms[Rooms[player.Location].North])
+				} else {
+					Say("There is no path to the " + Rooms[Nouns[nouns[0]][0]].Names[0] + " from here")
 				}
 			} else if Nouns[nouns[0]][0] == "northeasts" {
 				if Rooms[player.Location].North_East != "" {
 					player = move(player, Rooms[Rooms[player.Location].North_East])
+				} else {
+					Say("There is no path to the " + Rooms[Nouns[nouns[0]][0]].Names[0] + " from here")
 				}
 			} else if Nouns[nouns[0]][0] == "easts" {
 				if Rooms[player.Location].East != "" {
 					player = move(player, Rooms[Rooms[player.Location].East])
+				} else {
+					Say("There is no path to the " + Rooms[Nouns[nouns[0]][0]].Names[0] + " from here")
 				}
 			} else if Nouns[nouns[0]][0] == "southeasts" {
 				if Rooms[player.Location].South_East != "" {
 					player = move(player, Rooms[Rooms[player.Location].South_East])
+				} else {
+					Say("There is no path to the " + Rooms[Nouns[nouns[0]][0]].Names[0] + " from here")
 				}
 			} else if Nouns[nouns[0]][0] == "souths" {
 				if Rooms[player.Location].South != "" {
 
 					player = move(player, Rooms[Rooms[player.Location].South])
+				} else {
+					Say("There is no path to the " + Rooms[Nouns[nouns[0]][0]].Names[0] + " from here")
 				}
 			} else if Nouns[nouns[0]][0] == "southwests" {
 				if Rooms[player.Location].South_West != "" {
 					player = move(player, Rooms[Rooms[player.Location].South_West])
+				} else {
+					Say("There is no path to the " + Rooms[Nouns[nouns[0]][0]].Names[0] + " from here")
 				}
 			} else if Nouns[nouns[0]][0] == "wests" {
 				if Rooms[player.Location].West != "" {
 					player = move(player, Rooms[Rooms[player.Location].West])
+				} else {
+					Say("There is no path to the " + Rooms[Nouns[nouns[0]][0]].Names[0] + " from here")
 				}
 			} else if Nouns[nouns[0]][0] == "northwests" {
 				if Rooms[player.Location].North_West != "" {
 					player = move(player, Rooms[Rooms[player.Location].North_West])
+				} else {
+					Say("There is no path to the " + Rooms[Nouns[nouns[0]][0]].Names[0] + " from here")
 				}
 			} else if Nouns[nouns[0]][0] == "ups" {
 				if Rooms[player.Location].Up != "" {
 					player = move(player, Rooms[Rooms[player.Location].Up])
+				} else {
+					Say("You can not " + verbs[0] + " " + nouns[0] + " at the moment")
 				}
 			} else if Nouns[nouns[0]][0] == "downs" {
 				if Rooms[player.Location].Down != "" {
 					player = move(player, Rooms[Rooms[player.Location].Down])
+				} else {
+					Say("You can not " + verbs[0] + " " + nouns[0] + " at the moment")
 				}
 			} else if Nouns[nouns[0]][0] == "backs" {
 				if player.Location != player.Last_Location {
 					player = move(player, Rooms[player.Last_Location])
+				} else {
+					Say("You are unable to retrace your steps")
 				}
 			} else {
 				//Not a compass direction, user may have typed a room name
