@@ -148,7 +148,6 @@ func RegisterRooms(dirloc string) {
 	names := getDirNames(dirloc)
 
 	for _, element := range names {
-
 		if isDir, _ := IsDirectory(dirloc + "/" + element); isDir {
 			RegisterRooms(dirloc + "/" + element)
 		} else {
@@ -166,7 +165,7 @@ func RegisterRooms(dirloc string) {
 						Adjectives[strings.ToLower(s)] = append(Adjectives[strings.ToLower(s)], r.ID)
 					}
 					Rooms[r.ID] = r
-					fmt.Println("Loaded: " + r.ID)
+					//fmt.Println("Loaded: " + r.ID)
 				} else {
 					fmt.Println("Warning: " + element + " could not be read.")
 				}
