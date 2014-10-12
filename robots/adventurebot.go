@@ -43,16 +43,19 @@ func init() {
 }
 
 func (p AdventureBot) Load() {
+	fmt.Println("Registering Requirements")
 	RegisterRequirements("../src/github.com/cptspacetoaster/adventurebot/requirements")
+	fmt.Println("Registering Actions")
 	RegisterActions("../src/github.com/cptspacetoaster/adventurebot/actions")
+	fmt.Println("Registering Widgets")
 	RegisterWidgets("../src/github.com/cptspacetoaster/adventurebot/widgets")
+	fmt.Println("Registering Items")
 	RegisterItems("../src/github.com/cptspacetoaster/adventurebot/items")
+	fmt.Println("Registering Rooms")
 	RegisterRooms("../src/github.com/cptspacetoaster/adventurebot/rooms")
 }
 
 func RegisterRequirements(dirloc string) {
-	fmt.Println("Registering Requirements")
-
 	names := getDirNames(dirloc)
 
 	for _, element := range names {
@@ -71,8 +74,6 @@ func RegisterRequirements(dirloc string) {
 }
 
 func RegisterActions(dirloc string) {
-	fmt.Println("Registering Actions")
-
 	names := getDirNames(dirloc)
 
 	for _, element := range names {
@@ -97,8 +98,6 @@ func RegisterActions(dirloc string) {
 }
 
 func RegisterWidgets(dirloc string) {
-	fmt.Println("Registering Widgets")
-
 	names := getDirNames(dirloc)
 
 	for _, element := range names {
@@ -120,8 +119,6 @@ func RegisterWidgets(dirloc string) {
 }
 
 func RegisterItems(dirloc string) {
-	fmt.Println("Registering Items")
-
 	names := getDirNames(dirloc)
 
 	for _, element := range names {
@@ -143,13 +140,16 @@ func RegisterItems(dirloc string) {
 }
 
 func RegisterRooms(dirloc string) {
-	fmt.Println("Registering Rooms")
-
 	names := getDirNames(dirloc)
 
 	for _, element := range names {
 		if isDir, _ := IsDirectory(dirloc + "/" + element); isDir {
-			RegisterRooms(dirloc + "/" + element)
+			if isLink, _ := IsSymlink(dirloc + "/" + element); isLink {
+				fmt.Println("Ignoring link: " + dirloc + "/" + element)
+				return
+			} else {
+				RegisterRooms(dirloc + "/" + element)
+			}
 		} else {
 			input, err2 := ioutil.ReadFile(dirloc + "/" + element)
 			if err2 != nil {
@@ -196,6 +196,11 @@ func RegisterRooms(dirloc string) {
 func IsDirectory(path string) (bool, error) {
 	fileInfo, err := os.Stat(path)
 	return fileInfo.IsDir(), err
+}
+
+func IsSymlink(path string) (bool, error) {
+	fileInfo, err := os.Lstat(path)
+	return fileInfo.Mode()&os.ModeSymlink == os.ModeSymlink, err
 }
 
 func getDirNames(dirloc string) (names []string) {
@@ -433,7 +438,7 @@ func (p AdventureBot) DeferredAction(command *SlashCommand) {
 
 		} else {
 			//user didn't tell me where to go
-			Say("I do not know where you are trying to go.")
+			Say("I do not know where you are trying to " + verbs[0] + ".")
 		}
 
 		//check for current room
