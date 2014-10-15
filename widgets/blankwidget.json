@@ -3,13 +3,11 @@
         "blank"
     ],
     "Names": [
-        "widget",
-        "testwidget",
-        "anothertestwidget"
+        "widget"
     ],
     "ID": "blankwidget",
     "Display_Name": "Blank Widget",
-    "Description": "The blankwidget is not very entertaining to look at",
+    "Description": "The Blank Widget is not very entertaining to look at",
     "Actions": [
         "blankaction"
     ]

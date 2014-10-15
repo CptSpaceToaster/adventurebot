@@ -34,7 +34,7 @@ type Room struct {
 
 type Item struct {
 	Adjectives   []string `json:"adjectives,omitempty"`
-	Names        []string `json:"name"`
+	Names        []string `json:"names"`
 	ID           string   `json:"id"`
 	Display_Name string   `json:"display_name"`
 	Description  string   `json:"description"`
@@ -44,7 +44,7 @@ type Item struct {
 
 type Widget struct {
 	Adjectives   []string `json:"adjectives,omitempty"`
-	Names        []string `json:"name"`
+	Names        []string `json:"names"`
 	ID           string   `json:"id"`
 	Display_Name string   `json:"display_name"`
 	Description  string   `json:"description"`

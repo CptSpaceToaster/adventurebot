@@ -108,13 +108,11 @@ func RegisterWidgets(dirloc string) {
 			var w Widget
 			json.Unmarshal(input, &w)
 			if w.ID != "" {
-				fmt.Println(w.Names)
 				for _, s := range w.Names {
 					Nouns[strings.ToLower(s)] = append(Nouns[strings.ToLower(s)], w.ID)
-					fmt.Println("Adding " + s + " to the Nouns dictionary")
 				}
 				Widgets[w.ID] = w
-				fmt.Println("Loaed: " + w.ID)
+				//fmt.Println("Loaded: " + w.ID)
 			}
 		}
 	}
