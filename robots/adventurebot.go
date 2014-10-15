@@ -88,7 +88,7 @@ func RegisterActions(dirloc string) {
 					Verbs[strings.ToLower(s)] = append(Verbs[strings.ToLower(s)], a.ID)
 				}
 				for _, s := range a.Adverbs {
-					Verbs[strings.ToLower(s)] = append(Adverbs[strings.ToLower(s)], a.ID)
+					Adverbs[strings.ToLower(s)] = append(Adverbs[strings.ToLower(s)], a.ID)
 				}
 				Actions[a.ID] = a
 				//fmt.Println("Loaded: " + a.ID)
@@ -108,11 +108,13 @@ func RegisterWidgets(dirloc string) {
 			var w Widget
 			json.Unmarshal(input, &w)
 			if w.ID != "" {
+				fmt.Println(w.Names)
 				for _, s := range w.Names {
 					Nouns[strings.ToLower(s)] = append(Nouns[strings.ToLower(s)], w.ID)
+					fmt.Println("Adding " + s + " to the Nouns dictionary")
 				}
 				Widgets[w.ID] = w
-				//fmt.Println("Loaded: " + w.ID)
+				fmt.Println("Loaed: " + w.ID)
 			}
 		}
 	}
@@ -220,6 +222,7 @@ func getDirNames(dirloc string) (names []string) {
 
 func RegisterPlayer(name string) (player Player) {
 	player.Name = name
+	Nouns[strings.ToLower(name)] = append(Nouns[strings.ToLower(name)], name)
 	player.Location = "beach3"
 	player.Last_Location = "beach3"
 	//Lock
@@ -236,10 +239,11 @@ func (p AdventureBot) Run(command *SlashCommand) (slashCommandImmediateReturn st
 
 func (p AdventureBot) DeferredAction(command *SlashCommand) {
 	//if the command isn't issued from adventure, then ignore it. This shouldn't be possible anymore
-	if command.Channel_Name != "adventure" {
-		return
-	}
-
+	/*
+		if command.Channel_Name != "adventure" {
+			return
+		}
+	*/
 	if _, exist := Players[command.User_Name]; !exist {
 		RegisterPlayer(command.User_Name)
 	}
@@ -323,7 +327,46 @@ func (p AdventureBot) DeferredAction(command *SlashCommand) {
 	//fmt.Println(action)
 
 	if action == "look" {
-		SayDesc(Rooms[player.Location])
+		if len(nouns) == 0 {
+			SayDesc_R(Rooms[player.Location])
+		} else {
+			var candidates []Widget
+
+			for _, w := range Rooms[player.Location].Widgets {
+				//find all widgets in the room
+				//fmt.Print("Looking at " + r)
+				if _, exist := Widgets[w]; exist {
+					//does the actual entry exist?
+					//fmt.Println(" Found!")
+					if StringInSlice(nouns[0], Widgets[w].Names) {
+						//the user typed in a valid widget
+						candidates = append(candidates, Widgets[w])
+					}
+				}
+			}
+
+			if len(candidates) == 0 {
+				if len(input) == 1 {
+					SayDesc_R(Rooms[player.Location])
+				} else {
+					Say("I can not look at that")
+				}
+			} else if len(candidates) == 1 {
+				SayDesc_W(candidates[0])
+			} else {
+				if len(adjectives) == 0 {
+					Say(fmt.Sprintf("There is more than one type of %s nearby!", nouns[0]))
+				} else {
+					for _, w := range candidates {
+						if StringInSlice(adjectives[0], w.Adjectives) {
+							//the user typed in a valid widget noun
+							SayDesc_W(w)
+							break
+						}
+					}
+				}
+			}
+		}
 	} else if action == "move" {
 		if len(nouns) > 0 {
 			//check for compass directions
@@ -444,7 +487,6 @@ func (p AdventureBot) DeferredAction(command *SlashCommand) {
 		//check for current room
 		//fmt.Println(Rooms[player.Location])
 		/*
-			if StringInSlice(target, Rooms[player.Location].Names) {
 				Say(fmt.Sprintf("%s is already in the %s", player.Name, player.Location))
 				target = ""
 			}
@@ -467,12 +509,20 @@ func move(p Player, r Room) Player {
 	p.Last_Location = p.Location
 	p.Location = r.ID
 	//Say(fmt.Sprintf("%s is now in the %s", player.Name, Rooms[player.Location].Names[0]))
-	SayDesc(r)
+	SayDesc_R(r)
 	return p
 }
 
-func SayDesc(r Room) {
+func SayDesc_R(r Room) {
 	Say(r.Display_Name + "\n______________________________________________\n" + r.Description)
+}
+
+func SayDesc_W(w Widget) {
+	Say(w.Description)
+}
+
+func SayDesc_I(i Item) {
+	Say(i.Description)
 }
 
 func Say(text string) {

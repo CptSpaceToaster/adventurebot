@@ -8,8 +8,8 @@ type Player struct {
 }
 
 type Room struct {
-	Names        []string `json:"names"`
 	Adjectives   []string `json:"adjectives,omitempty"`
+	Names        []string `json:"names"`
 	ID           string   `json:"id"`
 	Display_Name string   `json:"display_name"`
 	Description  string   `json:"description"`
@@ -33,18 +33,22 @@ type Room struct {
 }
 
 type Item struct {
-	Names       []string `json:"name"`
-	ID          string   `json:"id"`
-	Description string   `json:"description"`
-	Amount      int      `json:"amount,omitempty"`
-	Actions     []Action `json:"actions,omitempty"`
+	Adjectives   []string `json:"adjectives,omitempty"`
+	Names        []string `json:"name"`
+	ID           string   `json:"id"`
+	Display_Name string   `json:"display_name"`
+	Description  string   `json:"description"`
+	Quantity     int      `json:"quantity,omitempty"` //zero quantity implies infinity
+	Actions      []Action `json:"actions,omitempty"`
 }
 
 type Widget struct {
-	Names       []string `json:"name"`
-	ID          string   `json:"id"`
-	Description string   `json:"description"`
-	Actions     []Action `json:"actions,omitempty"`
+	Adjectives   []string `json:"adjectives,omitempty"`
+	Names        []string `json:"name"`
+	ID           string   `json:"id"`
+	Display_Name string   `json:"display_name"`
+	Description  string   `json:"description"`
+	Actions      []Action `json:"actions,omitempty"`
 }
 
 type Action struct {

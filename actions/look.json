@@ -3,7 +3,17 @@
         "look",
         "gaze",
         "stare",
-        "investigate"
+        "investigate",
+        "observe",
+        "check",
+        "gawk",
+        "view",
+        "peek",
+        "inspect",
+        "behold",
+        "notice",
+        "survey",
+        "leer"
     ],
     "id": "look"
 }

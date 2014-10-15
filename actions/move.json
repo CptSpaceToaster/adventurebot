@@ -12,7 +12,8 @@
         "skip",
         "stumble",
         "meander",
-        "cartwheel"
+        "cartwheel",
+        "step"
     ],
     "id": "move"
 }

@@ -1,10 +1,16 @@
 {
-    "name": [
-        "blankwidget"
+    "Adjectives": [
+        "blank"
     ],
-    "id": "blankwidget",
-    "description": "The blankwidget is not very entertaining to look at",
-    "actions": [
-        "blankaction",
+    "Names": [
+        "widget",
+        "testwidget",
+        "anothertestwidget"
+    ],
+    "ID": "blankwidget",
+    "Display_Name": "Blank Widget",
+    "Description": "The blankwidget is not very entertaining to look at",
+    "Actions": [
+        "blankaction"
     ]
 }
