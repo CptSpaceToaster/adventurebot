@@ -108,6 +108,9 @@ func RegisterWidgets(dirloc string) {
 			var w Widget
 			json.Unmarshal(input, &w)
 			if w.ID != "" {
+				for _, s := range w.Adjectives {
+					Adjectives[strings.ToLower(s)] = append(Adjectives[strings.ToLower(s)], w.ID)
+				}
 				for _, s := range w.Names {
 					Nouns[strings.ToLower(s)] = append(Nouns[strings.ToLower(s)], w.ID)
 				}
@@ -129,6 +132,9 @@ func RegisterItems(dirloc string) {
 			var i Item
 			json.Unmarshal(input, &i)
 			if i.ID != "" {
+				for _, s := range i.Adjectives {
+					Adjectives[strings.ToLower(s)] = append(Adjectives[strings.ToLower(s)], i.ID)
+				}
 				for _, s := range i.Names {
 					Nouns[strings.ToLower(s)] = append(Nouns[strings.ToLower(s)], i.ID)
 				}
@@ -158,11 +164,11 @@ func RegisterRooms(dirloc string) {
 				var r Room
 				json.Unmarshal(input, &r)
 				if r.ID != "" {
-					for _, s := range r.Names {
-						Nouns[strings.ToLower(s)] = append(Nouns[strings.ToLower(s)], r.ID)
-					}
 					for _, s := range r.Adjectives {
 						Adjectives[strings.ToLower(s)] = append(Adjectives[strings.ToLower(s)], r.ID)
+					}
+					for _, s := range r.Names {
+						Nouns[strings.ToLower(s)] = append(Nouns[strings.ToLower(s)], r.ID)
 					}
 					Rooms[r.ID] = r
 					//fmt.Println("Loaded: " + r.ID)
@@ -325,7 +331,6 @@ func (p AdventureBot) DeferredAction(command *SlashCommand) {
 	//fmt.Println(action)
 
 	if action == "look" {
-		fmt.Println(input)
 		if len(nouns) == 0 && len(input) == 1 {
 			SayDesc_R(Rooms[player.Location])
 		} else if len(nouns) > 0 {

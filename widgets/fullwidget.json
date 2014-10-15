@@ -1,0 +1,14 @@
+{
+    "Adjectives": [
+        "full"
+    ],
+    "Names": [
+        "widget"
+    ],
+    "ID": "fullwidget",
+    "Display_Name": "Full Widget",
+    "Description": "The full widget is not very entertaining to look at",
+    "Actions": [
+        "blankaction"
+    ]
+}

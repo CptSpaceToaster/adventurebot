@@ -32,6 +32,7 @@
     ],
     "Widgets": [
         "blankwidget",
+        "fullwidget",
         "waves",
         "ocean"
     ]
