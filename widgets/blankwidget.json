@@ -7,7 +7,7 @@
     ],
     "ID": "blankwidget",
     "Display_Name": "Blank Widget",
-    "Description": "The Blank Widget is not very entertaining to look at",
+    "Description": "The blank widget is not very entertaining to look at",
     "Actions": [
         "blankaction"
     ]
