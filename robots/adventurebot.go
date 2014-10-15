@@ -325,9 +325,10 @@ func (p AdventureBot) DeferredAction(command *SlashCommand) {
 	//fmt.Println(action)
 
 	if action == "look" {
-		if len(nouns) == 0 {
+		fmt.Println(input)
+		if len(nouns) == 0 && len(input) == 1 {
 			SayDesc_R(Rooms[player.Location])
-		} else {
+		} else if len(nouns) > 0 {
 			var candidates []Widget
 
 			for _, w := range Rooms[player.Location].Widgets {
@@ -342,12 +343,11 @@ func (p AdventureBot) DeferredAction(command *SlashCommand) {
 					}
 				}
 			}
-
 			if len(candidates) == 0 {
 				if len(input) == 1 {
 					SayDesc_R(Rooms[player.Location])
 				} else {
-					Say("I can not look at that")
+					Say("I don't see a " + nouns[0] + " nearby.")
 				}
 			} else if len(candidates) == 1 {
 				SayDesc_W(candidates[0])
@@ -364,6 +364,8 @@ func (p AdventureBot) DeferredAction(command *SlashCommand) {
 					}
 				}
 			}
+		} else {
+			Say("I can not look at that")
 		}
 	} else if action == "move" {
 		if len(nouns) > 0 {
