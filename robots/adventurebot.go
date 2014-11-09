@@ -2,6 +2,7 @@ package robots
 
 import (
 	"encoding/json"
+	"errors"
 	"fmt"
 	"io/ioutil"
 	"os"
@@ -19,18 +20,6 @@ var Nouns = make(map[string][]string)
 var Adjectives = make(map[string][]string)
 var Verbs = make(map[string][]string)
 var Adverbs = make(map[string][]string)
-
-//var filter = []string{"around", "by", "near", "towards", "to", "the", "a", "an", "on", "in"}
-
-//var movement = []string{"go", "move", "walk", "frollic", "climb", "travel", "crawl", "roll", "skip", "stumble", "meander", "cartwheel"}
-//var norths = []string{"n", "north", "nort", "norht", "norh"}
-//var northeasts = []string{"ne", "northeast", "norhteast", "norteast", "norheast", "norhteas", "norteas", "norheas"}
-//var easts = []string{"e", "east", "eas"}
-//var southeasts = []string{"se", "southeast", "souhteast", "souteast", "souheast", "souhteas", "souteas", "souheas"}
-//var souths = []string{"s", "south", "sout", "souht", "souh"}
-//var southwests = []string{"sw", "southwest", "souhtwest", "soutwest", "souhwest", "souhtwes", "soutwes", "souhwes"}
-//var wests = []string{"w", "west", "wes"}
-//var northwests = []string{"nw", "northwest", "norhtwest", "nortwest", "norhwest", "norhtwes", "nortwes", "norhwes"}
 
 type AdventureBot struct {
 }
@@ -51,7 +40,51 @@ func (p AdventureBot) Load() {
 	fmt.Println("Registering Items")
 	RegisterItems("../src/github.com/cptspacetoaster/adventurebot/items")
 	fmt.Println("Registering Rooms")
-	RegisterRooms("../src/github.com/cptspacetoaster/adventurebot/rooms")
+	//	RegisterRooms("../src/github.com/cptspacetoaster/adventurebot/rooms")
+	TraverseDirectories("../src/github.com/cptspacetoaster/adventurebot/rooms", HandleRooms)
+}
+
+func TraverseDirectories(dirloc string, handle func([]byte) error) {
+	names := getDirNames(dirloc)
+
+	for _, element := range names {
+		if isDir, _ := IsDirectory(dirloc + "/" + element); isDir {
+			if isLink, _ := IsSymlink(dirloc + "/" + element); isLink {
+				fmt.Println("Ignoring link: " + dirloc + "/" + element)
+				return
+			} else {
+				TraverseDirectories(dirloc+"/"+element, handle)
+			}
+		} else {
+			input, err := ioutil.ReadFile(dirloc + "/" + element)
+			if err != nil {
+				fmt.Println("Could not read " + element)
+			} else {
+				err = handle(input)
+				if err != nil {
+					fmt.Println("Warning: " + element + " was rejected.")
+				}
+			}
+		}
+	}
+}
+
+func HandleRooms(input []byte) error {
+	var r Room
+	json.Unmarshal(input, &r)
+	if r.ID != "" {
+		for _, s := range r.Adjectives {
+			Adjectives[strings.ToLower(s)] = append(Adjectives[strings.ToLower(s)], r.ID)
+		}
+		for _, s := range r.Names {
+			Nouns[strings.ToLower(s)] = append(Nouns[strings.ToLower(s)], r.ID)
+		}
+		Rooms[r.ID] = r
+		//fmt.Println("Loaded: " + r.ID)
+	} else {
+		return errors.New("Input could not be Unmarshalled into type Room")
+	}
+	return nil
 }
 
 func RegisterRequirements(dirloc string) {
