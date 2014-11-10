@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"os"
+	"path/filepath"
 	"strings"
 )
 
@@ -32,44 +33,101 @@ func init() {
 
 func (p AdventureBot) Load() {
 	fmt.Println("Registering Requirements")
-	RegisterRequirements("../src/github.com/cptspacetoaster/adventurebot/requirements")
+	traverseDirectories("../src/github.com/cptspacetoaster/adventurebot/requirements", handleRequirements)
 	fmt.Println("Registering Actions")
-	RegisterActions("../src/github.com/cptspacetoaster/adventurebot/actions")
+	traverseDirectories("../src/github.com/cptspacetoaster/adventurebot/actions", handleActions)
 	fmt.Println("Registering Widgets")
-	RegisterWidgets("../src/github.com/cptspacetoaster/adventurebot/widgets")
+	traverseDirectories("../src/github.com/cptspacetoaster/adventurebot/widgets", handleWidgets)
 	fmt.Println("Registering Items")
-	RegisterItems("../src/github.com/cptspacetoaster/adventurebot/items")
+	traverseDirectories("../src/github.com/cptspacetoaster/adventurebot/items", handleItems)
 	fmt.Println("Registering Rooms")
-	//	RegisterRooms("../src/github.com/cptspacetoaster/adventurebot/rooms")
-	TraverseDirectories("../src/github.com/cptspacetoaster/adventurebot/rooms", HandleRooms)
+	traverseDirectories("../src/github.com/cptspacetoaster/adventurebot/rooms", handleRooms)
 }
 
-func TraverseDirectories(dirloc string, handle func([]byte) error) {
-	names := getDirNames(dirloc)
-
-	for _, element := range names {
-		if isDir, _ := IsDirectory(dirloc + "/" + element); isDir {
-			if isLink, _ := IsSymlink(dirloc + "/" + element); isLink {
-				fmt.Println("Ignoring link: " + dirloc + "/" + element)
-				return
-			} else {
-				TraverseDirectories(dirloc+"/"+element, handle)
-			}
-		} else {
-			input, err := ioutil.ReadFile(dirloc + "/" + element)
+func traverseDirectories(root_dir string, handle func(input []byte) error) {
+	filepath.Walk(root_dir, func(path string, fi os.FileInfo, err error) error {
+		if err == nil && fi.Mode().IsRegular() && filepath.Ext(path) == ".json" {
+			input, err := ioutil.ReadFile(path)
 			if err != nil {
-				fmt.Println("Could not read " + element)
+				fmt.Println("Could not read " + path)
 			} else {
 				err = handle(input)
 				if err != nil {
-					fmt.Println("Warning: " + element + " was rejected.")
+					fmt.Println("Warning: " + path + " was rejected.")
 				}
 			}
 		}
-	}
+		return err
+	})
 }
 
-func HandleRooms(input []byte) error {
+func handleRequirements(input []byte) error {
+	var r Requirement
+	json.Unmarshal(input, &r)
+	if r.Name != "" {
+		Requirements[r.Name] = r
+		//fmt.Println("Loaded: " + r.Name)
+	} else {
+		return errors.New("Input could not be Unmarshalled into type Requirement")
+	}
+	return nil
+}
+
+func handleActions(input []byte) error {
+	var a Action
+	json.Unmarshal(input, &a)
+	if a.ID != "" {
+		for _, s := range a.Commands {
+			Verbs[strings.ToLower(s)] = append(Verbs[strings.ToLower(s)], a.ID)
+		}
+		for _, s := range a.Adverbs {
+			Adverbs[strings.ToLower(s)] = append(Adverbs[strings.ToLower(s)], a.ID)
+		}
+		Actions[a.ID] = a
+		//fmt.Println("Loaded: " + a.ID)
+	} else {
+		return errors.New("Input could not be Unmarshalled into type Action")
+	}
+	return nil
+}
+
+func handleWidgets(input []byte) error {
+	var w Widget
+	json.Unmarshal(input, &w)
+	if w.ID != "" {
+		for _, s := range w.Adjectives {
+			Adjectives[strings.ToLower(s)] = append(Adjectives[strings.ToLower(s)], w.ID)
+		}
+		for _, s := range w.Names {
+			Nouns[strings.ToLower(s)] = append(Nouns[strings.ToLower(s)], w.ID)
+		}
+		Widgets[w.ID] = w
+		//fmt.Println("Loaded: " + w.ID)
+	} else {
+		return errors.New("Input could not be Unmarshalled into type Widget")
+	}
+	return nil
+}
+
+func handleItems(input []byte) error {
+	var i Item
+	json.Unmarshal(input, &i)
+	if i.ID != "" {
+		for _, s := range i.Adjectives {
+			Adjectives[strings.ToLower(s)] = append(Adjectives[strings.ToLower(s)], i.ID)
+		}
+		for _, s := range i.Names {
+			Nouns[strings.ToLower(s)] = append(Nouns[strings.ToLower(s)], i.ID)
+		}
+		Items[i.ID] = i
+		//fmt.Println("Loaded: " + i.ID)
+	} else {
+		return errors.New("Input could not be Unmarshalled into type Item")
+	}
+	return nil
+}
+
+func handleRooms(input []byte) error {
 	var r Room
 	json.Unmarshal(input, &r)
 	if r.ID != "" {
@@ -85,186 +143,6 @@ func HandleRooms(input []byte) error {
 		return errors.New("Input could not be Unmarshalled into type Room")
 	}
 	return nil
-}
-
-func RegisterRequirements(dirloc string) {
-	names := getDirNames(dirloc)
-
-	for _, element := range names {
-		if isDir, _ := IsDirectory(dirloc + "/" + element); isDir {
-			if isLink, _ := IsSymlink(dirloc + "/" + element); isLink {
-				fmt.Println("Ignoring link: " + dirloc + "/" + element)
-				return
-			} else {
-				RegisterItems(dirloc + "/" + element)
-			}
-		} else {
-			input, err2 := ioutil.ReadFile(dirloc + "/" + element)
-			if err2 != nil {
-				fmt.Println("Could not read " + element)
-			} else {
-				var r Requirement
-				json.Unmarshal(input, &r)
-				if r.Name != "" {
-					Requirements[r.Name] = r
-					//fmt.Println("Loaded: " + r.Name)
-				}
-			}
-		}
-	}
-}
-
-func RegisterActions(dirloc string) {
-	names := getDirNames(dirloc)
-
-	for _, element := range names {
-		if isDir, _ := IsDirectory(dirloc + "/" + element); isDir {
-			if isLink, _ := IsSymlink(dirloc + "/" + element); isLink {
-				fmt.Println("Ignoring link: " + dirloc + "/" + element)
-				return
-			} else {
-				RegisterItems(dirloc + "/" + element)
-			}
-		} else {
-			input, err2 := ioutil.ReadFile(dirloc + "/" + element)
-			if err2 != nil {
-				fmt.Println("Could not read " + element)
-			} else {
-				var a Action
-				json.Unmarshal(input, &a)
-				if a.ID != "" {
-					for _, s := range a.Commands {
-						Verbs[strings.ToLower(s)] = append(Verbs[strings.ToLower(s)], a.ID)
-					}
-					for _, s := range a.Adverbs {
-						Adverbs[strings.ToLower(s)] = append(Adverbs[strings.ToLower(s)], a.ID)
-					}
-					Actions[a.ID] = a
-					//fmt.Println("Loaded: " + a.ID)
-				}
-			}
-		}
-	}
-}
-
-func RegisterWidgets(dirloc string) {
-	names := getDirNames(dirloc)
-
-	for _, element := range names {
-		if isDir, _ := IsDirectory(dirloc + "/" + element); isDir {
-			if isLink, _ := IsSymlink(dirloc + "/" + element); isLink {
-				fmt.Println("Ignoring link: " + dirloc + "/" + element)
-				return
-			} else {
-				RegisterItems(dirloc + "/" + element)
-			}
-		} else {
-			input, err2 := ioutil.ReadFile(dirloc + "/" + element)
-			if err2 != nil {
-				fmt.Println("Could not read " + element)
-			} else {
-				var w Widget
-				json.Unmarshal(input, &w)
-				if w.ID != "" {
-					for _, s := range w.Adjectives {
-						Adjectives[strings.ToLower(s)] = append(Adjectives[strings.ToLower(s)], w.ID)
-					}
-					for _, s := range w.Names {
-						Nouns[strings.ToLower(s)] = append(Nouns[strings.ToLower(s)], w.ID)
-					}
-					Widgets[w.ID] = w
-					//fmt.Println("Loaded: " + w.ID)
-				}
-			}
-		}
-	}
-}
-
-func RegisterItems(dirloc string) {
-	names := getDirNames(dirloc)
-
-	for _, element := range names {
-		if isDir, _ := IsDirectory(dirloc + "/" + element); isDir {
-			if isLink, _ := IsSymlink(dirloc + "/" + element); isLink {
-				fmt.Println("Ignoring link: " + dirloc + "/" + element)
-				return
-			} else {
-				RegisterItems(dirloc + "/" + element)
-			}
-		} else {
-			input, err2 := ioutil.ReadFile(dirloc + "/" + element)
-			if err2 != nil {
-				fmt.Println("Could not read " + element)
-			} else {
-				var i Item
-				json.Unmarshal(input, &i)
-				if i.ID != "" {
-					for _, s := range i.Adjectives {
-						Adjectives[strings.ToLower(s)] = append(Adjectives[strings.ToLower(s)], i.ID)
-					}
-					for _, s := range i.Names {
-						Nouns[strings.ToLower(s)] = append(Nouns[strings.ToLower(s)], i.ID)
-					}
-					Items[i.ID] = i
-					//fmt.Println("Loaded: " + i.ID)
-				}
-			}
-		}
-	}
-}
-
-func RegisterRooms(dirloc string) {
-	names := getDirNames(dirloc)
-
-	for _, element := range names {
-		if isDir, _ := IsDirectory(dirloc + "/" + element); isDir {
-			if isLink, _ := IsSymlink(dirloc + "/" + element); isLink {
-				fmt.Println("Ignoring link: " + dirloc + "/" + element)
-				return
-			} else {
-				RegisterRooms(dirloc + "/" + element)
-			}
-		} else {
-			input, err2 := ioutil.ReadFile(dirloc + "/" + element)
-			if err2 != nil {
-				fmt.Println("Could not read " + element)
-			} else {
-				var r Room
-				json.Unmarshal(input, &r)
-				if r.ID != "" {
-					for _, s := range r.Adjectives {
-						Adjectives[strings.ToLower(s)] = append(Adjectives[strings.ToLower(s)], r.ID)
-					}
-					for _, s := range r.Names {
-						Nouns[strings.ToLower(s)] = append(Nouns[strings.ToLower(s)], r.ID)
-					}
-					Rooms[r.ID] = r
-					//fmt.Println("Loaded: " + r.ID)
-				} else {
-					fmt.Println("Warning: " + element + " could not be read.")
-				}
-			}
-		}
-	}
-	/*
-		fmt.Print("\n")
-		for k, _ := range Nouns {
-			fmt.Print(k + ", ")
-		}
-		fmt.Print("\n\n")
-		for k, _ := range Adjectives {
-			fmt.Print(k + ", ")
-		}
-		fmt.Print("\n\n")
-		for k, _ := range Verbs {
-			fmt.Print(k + ", ")
-		}
-		fmt.Print("\n\n")
-		for k, _ := range Adverbs {
-			fmt.Print(k + ", ")
-		}
-		fmt.Print("\n\n")
-	*/
 }
 
 func IsDirectory(path string) (bool, error) {
