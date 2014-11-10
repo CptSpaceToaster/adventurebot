@@ -1,0 +1,19 @@
+{
+    "Adjectives": [
+        "welcome",
+        "door"
+    ],
+    "Names": [
+        "mat",
+        "welcomemat",
+        "welcome-mat",
+        "doormat",
+        "door-mat"
+    ],
+    "ID": "castle_welcome_mat",
+    "Display_Name": "Welcome Mat",
+    "Description": "A pleasant little mat that one might wipe their shoes on to keep the castle tidy.  Complete with a homely saying!",
+    "Actions": [
+        "read_castle_welcome_mat"
+    ]
+}

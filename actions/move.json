@@ -13,7 +13,8 @@
         "stumble",
         "meander",
         "cartwheel",
-        "step"
+        "step",
+        "head"
     ],
     "id": "move"
 }
