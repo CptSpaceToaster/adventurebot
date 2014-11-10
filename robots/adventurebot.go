@@ -53,7 +53,8 @@ func registerJson(root_dir string, handle func(input []byte) error) {
 			} else {
 				err = handle(input)
 				if err != nil {
-					fmt.Println("Warning: " + path + " was rejected.")
+					fmt.Print(err)
+					fmt.Println(":\n" + path)
 				}
 			}
 		}
@@ -278,7 +279,7 @@ func (p AdventureBot) DeferredAction(command *SlashCommand) {
 
 	if action == "look" {
 		if len(nouns) == 0 && len(input) == 1 {
-			SayDesc_R(Rooms[player.Location])
+			sayDesc_R(Rooms[player.Location])
 		} else if len(nouns) > 0 {
 			var candidates []Widget
 
@@ -296,27 +297,27 @@ func (p AdventureBot) DeferredAction(command *SlashCommand) {
 			}
 			if len(candidates) == 0 {
 				if len(input) == 1 {
-					SayDesc_R(Rooms[player.Location])
+					sayDesc_R(Rooms[player.Location])
 				} else {
-					Say("I don't see a " + nouns[0] + " nearby.")
+					say("I don't see a " + nouns[0] + " nearby.")
 				}
 			} else if len(candidates) == 1 {
-				SayDesc_W(candidates[0])
+				sayDesc_W(candidates[0])
 			} else {
 				if len(adjectives) == 0 {
-					Say(fmt.Sprintf("There is more than one type of %s nearby!", nouns[0]))
+					say(fmt.Sprintf("There is more than one type of %s nearby!", nouns[0]))
 				} else {
 					for _, w := range candidates {
 						if StringInSlice(adjectives[0], w.Adjectives) {
 							//the user typed in a valid widget noun
-							SayDesc_W(w)
+							sayDesc_W(w)
 							break
 						}
 					}
 				}
 			}
 		} else {
-			Say("I can not look at that")
+			say("I can not look at that")
 		}
 	} else if action == "move" {
 		if len(nouns) > 0 {
@@ -325,68 +326,68 @@ func (p AdventureBot) DeferredAction(command *SlashCommand) {
 				if Rooms[player.Location].North != "" {
 					player = move(player, Rooms[Rooms[player.Location].North])
 				} else {
-					Say("There is no path to the " + Rooms[Nouns[nouns[0]][0]].Names[0] + " from here")
+					say("There is no path to the " + Rooms[Nouns[nouns[0]][0]].Names[0] + " from here")
 				}
 			} else if Nouns[nouns[0]][0] == "northeasts" {
 				if Rooms[player.Location].North_East != "" {
 					player = move(player, Rooms[Rooms[player.Location].North_East])
 				} else {
-					Say("There is no path to the " + Rooms[Nouns[nouns[0]][0]].Names[0] + " from here")
+					say("There is no path to the " + Rooms[Nouns[nouns[0]][0]].Names[0] + " from here")
 				}
 			} else if Nouns[nouns[0]][0] == "easts" {
 				if Rooms[player.Location].East != "" {
 					player = move(player, Rooms[Rooms[player.Location].East])
 				} else {
-					Say("There is no path to the " + Rooms[Nouns[nouns[0]][0]].Names[0] + " from here")
+					say("There is no path to the " + Rooms[Nouns[nouns[0]][0]].Names[0] + " from here")
 				}
 			} else if Nouns[nouns[0]][0] == "southeasts" {
 				if Rooms[player.Location].South_East != "" {
 					player = move(player, Rooms[Rooms[player.Location].South_East])
 				} else {
-					Say("There is no path to the " + Rooms[Nouns[nouns[0]][0]].Names[0] + " from here")
+					say("There is no path to the " + Rooms[Nouns[nouns[0]][0]].Names[0] + " from here")
 				}
 			} else if Nouns[nouns[0]][0] == "souths" {
 				if Rooms[player.Location].South != "" {
 
 					player = move(player, Rooms[Rooms[player.Location].South])
 				} else {
-					Say("There is no path to the " + Rooms[Nouns[nouns[0]][0]].Names[0] + " from here")
+					say("There is no path to the " + Rooms[Nouns[nouns[0]][0]].Names[0] + " from here")
 				}
 			} else if Nouns[nouns[0]][0] == "southwests" {
 				if Rooms[player.Location].South_West != "" {
 					player = move(player, Rooms[Rooms[player.Location].South_West])
 				} else {
-					Say("There is no path to the " + Rooms[Nouns[nouns[0]][0]].Names[0] + " from here")
+					say("There is no path to the " + Rooms[Nouns[nouns[0]][0]].Names[0] + " from here")
 				}
 			} else if Nouns[nouns[0]][0] == "wests" {
 				if Rooms[player.Location].West != "" {
 					player = move(player, Rooms[Rooms[player.Location].West])
 				} else {
-					Say("There is no path to the " + Rooms[Nouns[nouns[0]][0]].Names[0] + " from here")
+					say("There is no path to the " + Rooms[Nouns[nouns[0]][0]].Names[0] + " from here")
 				}
 			} else if Nouns[nouns[0]][0] == "northwests" {
 				if Rooms[player.Location].North_West != "" {
 					player = move(player, Rooms[Rooms[player.Location].North_West])
 				} else {
-					Say("There is no path to the " + Rooms[Nouns[nouns[0]][0]].Names[0] + " from here")
+					say("There is no path to the " + Rooms[Nouns[nouns[0]][0]].Names[0] + " from here")
 				}
 			} else if Nouns[nouns[0]][0] == "ups" {
 				if Rooms[player.Location].Up != "" {
 					player = move(player, Rooms[Rooms[player.Location].Up])
 				} else {
-					Say("You can not " + verbs[0] + " " + nouns[0] + " at the moment")
+					say("You can not " + verbs[0] + " " + nouns[0] + " at the moment")
 				}
 			} else if Nouns[nouns[0]][0] == "downs" {
 				if Rooms[player.Location].Down != "" {
 					player = move(player, Rooms[Rooms[player.Location].Down])
 				} else {
-					Say("You can not " + verbs[0] + " " + nouns[0] + " at the moment")
+					say("You can not " + verbs[0] + " " + nouns[0] + " at the moment")
 				}
 			} else if Nouns[nouns[0]][0] == "backs" {
 				if player.Location != player.Last_Location {
 					player = move(player, Rooms[player.Last_Location])
 				} else {
-					Say("You are unable to retrace your steps")
+					say("You are unable to retrace your steps")
 				}
 			} else {
 				//Not a compass direction, user may have typed a room name
@@ -409,15 +410,15 @@ func (p AdventureBot) DeferredAction(command *SlashCommand) {
 
 				if len(candidates) == 0 {
 					if StringInSlice(nouns[0], Rooms[player.Location].Names) {
-						Say(fmt.Sprintf("You are already in the %s.", nouns[0]))
+						say(fmt.Sprintf("You are already in the %s.", nouns[0]))
 					} else {
-						Say(fmt.Sprintf("You can not make it to the %s from here.", nouns[0]))
+						say(fmt.Sprintf("You can not make it to the %s from here.", nouns[0]))
 					}
 				} else if len(candidates) == 1 {
 					player = move(player, candidates[0])
 				} else {
 					if len(adjectives) == 0 {
-						Say(fmt.Sprintf("There is more than one type of %s nearby!", nouns[0]))
+						say(fmt.Sprintf("There is more than one type of %s nearby!", nouns[0]))
 					} else {
 						for _, r := range candidates {
 							if StringInSlice(adjectives[0], r.Adjectives) {
@@ -432,23 +433,23 @@ func (p AdventureBot) DeferredAction(command *SlashCommand) {
 
 		} else {
 			//user didn't tell me where to go
-			Say("I do not know where you are trying to " + verbs[0] + ".")
+			say("I do not know where you are trying to " + verbs[0] + ".")
 		}
 
 		//check for current room
 		//fmt.Println(Rooms[player.Location])
 		/*
-				Say(fmt.Sprintf("%s is already in the %s", player.Name, player.Location))
+				say(fmt.Sprintf("%s is already in the %s", player.Name, player.Location))
 				target = ""
 			}
 			//check for adjacent rooms
 			//Can't go there
 			if target != "" {
-				Say(fmt.Sprintf("%s can not %s there", player.Name, input[0]))
+				say(fmt.Sprintf("%s can not %s there", player.Name, input[0]))
 			}
 		*/
 	} else {
-		Say(fmt.Sprintf("I do not understand what %s is trying to say", command.User_Name))
+		say(fmt.Sprintf("I do not understand what %s is trying to say", command.User_Name))
 	}
 
 	//Lock
@@ -459,24 +460,24 @@ func (p AdventureBot) DeferredAction(command *SlashCommand) {
 func move(p Player, r Room) Player {
 	p.Last_Location = p.Location
 	p.Location = r.ID
-	//Say(fmt.Sprintf("%s is now in the %s", player.Name, Rooms[player.Location].Names[0]))
-	SayDesc_R(r)
+	//say(fmt.Sprintf("%s is now in the %s", player.Name, Rooms[player.Location].Names[0]))
+	sayDesc_R(r)
 	return p
 }
 
-func SayDesc_R(r Room) {
-	Say(r.Display_Name + "\n______________________________________________\n" + r.Description)
+func sayDesc_R(r Room) {
+	say(r.Display_Name + "\n______________________________________________\n" + r.Description)
 }
 
-func SayDesc_W(w Widget) {
-	Say(w.Description)
+func sayDesc_W(w Widget) {
+	say(w.Description)
 }
 
-func SayDesc_I(i Item) {
-	Say(i.Description)
+func sayDesc_I(i Item) {
+	say(i.Description)
 }
 
-func Say(text string) {
+func say(text string) {
 	response := new(IncomingWebhook)
 	response.Channel = "C02HR18H4"
 	response.Username = "Adventure Bot"
@@ -500,5 +501,5 @@ func StringInSlice(a string, list []string) bool {
 
 func (p AdventureBot) Description() (description string) {
 	//Ehhh... todo?
-	return "Adventure bot!\n\tUsage: /adventure\n\tExpected Response: @user: Pong!"
+	return "Adventure bot!\n\tUsage: ?<command>\n\tOutput: An Adventure"
 }
