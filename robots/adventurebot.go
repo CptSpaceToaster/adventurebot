@@ -33,18 +33,18 @@ func init() {
 
 func (p AdventureBot) Load() {
 	fmt.Println("Registering Requirements")
-	traverseDirectories("../src/github.com/cptspacetoaster/adventurebot/requirements", handleRequirements)
+	registerJson("../src/github.com/cptspacetoaster/adventurebot/requirements", handleRequirements)
 	fmt.Println("Registering Actions")
-	traverseDirectories("../src/github.com/cptspacetoaster/adventurebot/actions", handleActions)
+	registerJson("../src/github.com/cptspacetoaster/adventurebot/actions", handleActions)
 	fmt.Println("Registering Widgets")
-	traverseDirectories("../src/github.com/cptspacetoaster/adventurebot/widgets", handleWidgets)
+	registerJson("../src/github.com/cptspacetoaster/adventurebot/widgets", handleWidgets)
 	fmt.Println("Registering Items")
-	traverseDirectories("../src/github.com/cptspacetoaster/adventurebot/items", handleItems)
+	registerJson("../src/github.com/cptspacetoaster/adventurebot/items", handleItems)
 	fmt.Println("Registering Rooms")
-	traverseDirectories("../src/github.com/cptspacetoaster/adventurebot/rooms", handleRooms)
+	registerJson("../src/github.com/cptspacetoaster/adventurebot/rooms", handleRooms)
 }
 
-func traverseDirectories(root_dir string, handle func(input []byte) error) {
+func registerJson(root_dir string, handle func(input []byte) error) {
 	filepath.Walk(root_dir, func(path string, fi os.FileInfo, err error) error {
 		if err == nil && fi.Mode().IsRegular() && filepath.Ext(path) == ".json" {
 			input, err := ioutil.ReadFile(path)
