@@ -282,7 +282,7 @@ func (p AdventureBot) DeferredAction(command *SlashCommand) {
 			sayDesc_R(Rooms[player.Location])
 		} else if len(nouns) > 0 {
 			var candidates []Widget
-
+			//TODO: Users can only look at widgets at the moment
 			for _, w := range Rooms[player.Location].Widgets {
 				//find all widgets in the room
 				//fmt.Print("Looking at " + r)
@@ -290,7 +290,7 @@ func (p AdventureBot) DeferredAction(command *SlashCommand) {
 					//does the actual entry exist?
 					//fmt.Println(" Found!")
 					if StringInSlice(nouns[0], Widgets[w].Names) {
-						//the user typed in a valid widget
+						//the user typed in a valid widget
 						candidates = append(candidates, Widgets[w])
 					}
 				}
@@ -448,6 +448,74 @@ func (p AdventureBot) DeferredAction(command *SlashCommand) {
 				say(fmt.Sprintf("%s can not %s there", player.Name, input[0]))
 			}
 		*/
+	} else if action != "" {
+		var candidates []Widget
+
+		for _, w := range Rooms[player.Location].Widgets {
+			//find all widgets in the room
+			//fmt.Print("Looking at " + r)
+			if _, exist := Widgets[w]; exist {
+				//does the actual entry exist?
+				//fmt.Println(" Found!")
+				if StringInSlice(action, Widgets[w].Actions) {
+					//the user typed in an action in this widget
+					candidates = append(candidates, Widgets[w])
+				}
+			}
+		}
+		if len(candidates) == 0 {
+			if len(input) == 1 {
+				say("You can't " + Actions[action].Commands[0] + " here")
+			} else {
+				say("You can't " + Actions[action].Commands[0] + " that here")
+			}
+		} else if len(candidates) == 1 {
+			doAction(player, Actions[action])
+		} else {
+			//TODO: Handle others
+			say("I can't handles this yet")
+		}
+
+		//can the verb be done with the noun
+		/*if len(nouns) == 0 {
+			say("I don't know what to " + action)
+		} else {
+			var ac_candidates []string
+			var candidates []Widget
+			//TODO: Users can only frob at widgets at the moment
+			for _, w := range Rooms[player.Location].Widgets {
+				//find all widgets in the room
+				//fmt.Print("Looking at " + r)
+				if _, exist := Widgets[w]; exist {
+					//does the actual entry exist?
+					//fmt.Println(" Found!")
+					if StringInSlice(nouns[0], Widgets[w].Names) {
+						//the user typed in a valid widget
+						candidates = append(candidates, Widgets[w])
+						if StringInSlice(action, )
+					}
+				}
+			}
+			if len(candidates) == 0 {
+				say("I don't see a " + nouns[0] + " nearby.")
+			} else if len(candidates) == 1 {
+				if
+				//sayDesc_A(candidates[0])
+			} else {
+				if len(adjectives) == 0 {
+					say(fmt.Sprintf("There is more than one type of %s nearby!", nouns[0]))
+				} else {
+					for _, w := range candidates {
+						if StringInSlice(adjectives[0], w.Adjectives) {
+							//the user typed in a valid widget noun
+							sayDesc_W(w)
+							break
+						}
+					}
+				}
+			}
+		}*/
+
 	} else {
 		say(fmt.Sprintf("I do not understand what %s is trying to say", command.User_Name))
 	}
@@ -477,6 +545,17 @@ func sayDesc_I(i Item) {
 	say(i.Description)
 }
 
+func doAction(p Player, a Action) {
+	//TODO: requirements
+	say(a.Result)
+	if a.Teleport != "" {
+		if _, exist := Rooms[a.Teleport]; exist {
+			move(p, Rooms[a.Teleport])
+		}
+	}
+	//TODO: Gives
+}
+
 func say(text string) {
 	response := new(IncomingWebhook)
 	response.Channel = "C02HR18H4"
@@ -500,6 +579,5 @@ func StringInSlice(a string, list []string) bool {
 }
 
 func (p AdventureBot) Description() (description string) {
-	//Ehhh... todo?
 	return "Adventure bot!\n\tUsage: ?<command>\n\tOutput: An Adventure"
 }

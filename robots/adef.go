@@ -39,7 +39,7 @@ type Item struct {
 	Display_Name string   `json:"display_name"`
 	Description  string   `json:"description"`
 	Quantity     int      `json:"quantity,omitempty"` //zero quantity implies infinity
-	Actions      []Action `json:"actions,omitempty"`
+	Actions      []string `json:"actions,omitempty"`
 }
 
 type Widget struct {
@@ -48,7 +48,7 @@ type Widget struct {
 	ID           string   `json:"id"`
 	Display_Name string   `json:"display_name"`
 	Description  string   `json:"description"`
-	Actions      []Action `json:"actions,omitempty"`
+	Actions      []string `json:"actions,omitempty"`
 }
 
 type Action struct {
