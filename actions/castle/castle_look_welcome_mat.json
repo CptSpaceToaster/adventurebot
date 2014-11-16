@@ -1,0 +1,14 @@
+{
+    "commands": [
+        "read"
+    ],
+    "id": "read_castle_welcome_mat",
+    "result": "It reads \"PLEASE DO NOT READ THIS DOORMAT!\"  How nice!",
+    "teleport": "",
+    "requires": [
+        ""
+    ],
+    "gives": [
+        ""
+    ]
+}
