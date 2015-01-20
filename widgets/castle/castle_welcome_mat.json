@@ -1,14 +1,16 @@
 {
     "Adjectives": [
         "welcome",
-        "door"
+        "door",
+        "homely"
     ],
     "Names": [
         "mat",
         "welcomemat",
         "welcome-mat",
         "doormat",
-        "door-mat"
+        "door-mat",
+        "saying"
     ],
     "ID": "castle_welcome_mat",
     "Display_Name": "Welcome Mat",

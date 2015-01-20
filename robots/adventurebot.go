@@ -13,7 +13,7 @@ import (
 var Players = make(map[string]Player)
 var Items = make(map[string]Item)
 var Rooms = make(map[string]Room)
-var Widgets = make(map[string]Widget)
+var Widgets = make(map[string]Widget) // Note, widgets are basically just items that can't be picked up.:wq
 var Actions = make(map[string]Action)
 var Requirements = make(map[string]Requirement)
 
@@ -172,6 +172,7 @@ func getDirNames(dirloc string) (names []string) {
 }
 
 func RegisterPlayer(name string) (player Player) {
+	//TODO: Handle same names from unique servers
 	player.Name = name
 	Nouns[strings.ToLower(name)] = append(Nouns[strings.ToLower(name)], name)
 	player.Location = "beach3"
@@ -279,7 +280,7 @@ func (p AdventureBot) DeferredAction(command *SlashCommand) {
 
 	if action == "look" {
 		if len(nouns) == 0 && len(input) == 1 {
-			sayDesc_R(Rooms[player.Location])
+			sayDesc_R(command, Rooms[player.Location])
 		} else if len(nouns) > 0 {
 			var candidates []Widget
 			//TODO: Users can only look at widgets at the moment
@@ -297,97 +298,97 @@ func (p AdventureBot) DeferredAction(command *SlashCommand) {
 			}
 			if len(candidates) == 0 {
 				if len(input) == 1 {
-					sayDesc_R(Rooms[player.Location])
+					sayDesc_R(command, Rooms[player.Location])
 				} else {
-					say("I don't see a " + nouns[0] + " nearby.")
+					say(command, "I don't see a "+nouns[0]+" nearby.")
 				}
 			} else if len(candidates) == 1 {
-				sayDesc_W(candidates[0])
+				sayDesc_W(command, candidates[0])
 			} else {
 				if len(adjectives) == 0 {
-					say(fmt.Sprintf("There is more than one type of %s nearby!", nouns[0]))
+					say(command, fmt.Sprintf("There is more than one type of %s nearby!", nouns[0]))
 				} else {
 					for _, w := range candidates {
 						if StringInSlice(adjectives[0], w.Adjectives) {
 							//the user typed in a valid widget noun
-							sayDesc_W(w)
+							sayDesc_W(command, w)
 							break
 						}
 					}
 				}
 			}
 		} else {
-			say("I can not look at that")
+			say(command, "I can not look at that")
 		}
 	} else if action == "move" {
 		if len(nouns) > 0 {
 			//check for compass directions
 			if Nouns[nouns[0]][0] == "norths" {
 				if Rooms[player.Location].North != "" {
-					player = move(player, Rooms[Rooms[player.Location].North])
+					player = move(command, player, Rooms[Rooms[player.Location].North])
 				} else {
-					say("There is no path to the " + Rooms[Nouns[nouns[0]][0]].Names[0] + " from here")
+					say(command, "There is no path to the "+Rooms[Nouns[nouns[0]][0]].Names[0]+" from here")
 				}
 			} else if Nouns[nouns[0]][0] == "northeasts" {
 				if Rooms[player.Location].North_East != "" {
-					player = move(player, Rooms[Rooms[player.Location].North_East])
+					player = move(command, player, Rooms[Rooms[player.Location].North_East])
 				} else {
-					say("There is no path to the " + Rooms[Nouns[nouns[0]][0]].Names[0] + " from here")
+					say(command, "There is no path to the "+Rooms[Nouns[nouns[0]][0]].Names[0]+" from here")
 				}
 			} else if Nouns[nouns[0]][0] == "easts" {
 				if Rooms[player.Location].East != "" {
-					player = move(player, Rooms[Rooms[player.Location].East])
+					player = move(command, player, Rooms[Rooms[player.Location].East])
 				} else {
-					say("There is no path to the " + Rooms[Nouns[nouns[0]][0]].Names[0] + " from here")
+					say(command, "There is no path to the "+Rooms[Nouns[nouns[0]][0]].Names[0]+" from here")
 				}
 			} else if Nouns[nouns[0]][0] == "southeasts" {
 				if Rooms[player.Location].South_East != "" {
-					player = move(player, Rooms[Rooms[player.Location].South_East])
+					player = move(command, player, Rooms[Rooms[player.Location].South_East])
 				} else {
-					say("There is no path to the " + Rooms[Nouns[nouns[0]][0]].Names[0] + " from here")
+					say(command, "There is no path to the "+Rooms[Nouns[nouns[0]][0]].Names[0]+" from here")
 				}
 			} else if Nouns[nouns[0]][0] == "souths" {
 				if Rooms[player.Location].South != "" {
 
-					player = move(player, Rooms[Rooms[player.Location].South])
+					player = move(command, player, Rooms[Rooms[player.Location].South])
 				} else {
-					say("There is no path to the " + Rooms[Nouns[nouns[0]][0]].Names[0] + " from here")
+					say(command, "There is no path to the "+Rooms[Nouns[nouns[0]][0]].Names[0]+" from here")
 				}
 			} else if Nouns[nouns[0]][0] == "southwests" {
 				if Rooms[player.Location].South_West != "" {
-					player = move(player, Rooms[Rooms[player.Location].South_West])
+					player = move(command, player, Rooms[Rooms[player.Location].South_West])
 				} else {
-					say("There is no path to the " + Rooms[Nouns[nouns[0]][0]].Names[0] + " from here")
+					say(command, "There is no path to the "+Rooms[Nouns[nouns[0]][0]].Names[0]+" from here")
 				}
 			} else if Nouns[nouns[0]][0] == "wests" {
 				if Rooms[player.Location].West != "" {
-					player = move(player, Rooms[Rooms[player.Location].West])
+					player = move(command, player, Rooms[Rooms[player.Location].West])
 				} else {
-					say("There is no path to the " + Rooms[Nouns[nouns[0]][0]].Names[0] + " from here")
+					say(command, "There is no path to the "+Rooms[Nouns[nouns[0]][0]].Names[0]+" from here")
 				}
 			} else if Nouns[nouns[0]][0] == "northwests" {
 				if Rooms[player.Location].North_West != "" {
-					player = move(player, Rooms[Rooms[player.Location].North_West])
+					player = move(command, player, Rooms[Rooms[player.Location].North_West])
 				} else {
-					say("There is no path to the " + Rooms[Nouns[nouns[0]][0]].Names[0] + " from here")
+					say(command, "There is no path to the "+Rooms[Nouns[nouns[0]][0]].Names[0]+" from here")
 				}
 			} else if Nouns[nouns[0]][0] == "ups" {
 				if Rooms[player.Location].Up != "" {
-					player = move(player, Rooms[Rooms[player.Location].Up])
+					player = move(command, player, Rooms[Rooms[player.Location].Up])
 				} else {
-					say("You can not " + verbs[0] + " " + nouns[0] + " at the moment")
+					say(command, "You can not "+verbs[0]+" "+nouns[0]+" at the moment")
 				}
 			} else if Nouns[nouns[0]][0] == "downs" {
 				if Rooms[player.Location].Down != "" {
-					player = move(player, Rooms[Rooms[player.Location].Down])
+					player = move(command, player, Rooms[Rooms[player.Location].Down])
 				} else {
-					say("You can not " + verbs[0] + " " + nouns[0] + " at the moment")
+					say(command, "You can not "+verbs[0]+" "+nouns[0]+" at the moment")
 				}
 			} else if Nouns[nouns[0]][0] == "backs" {
 				if player.Location != player.Last_Location {
-					player = move(player, Rooms[player.Last_Location])
+					player = move(command, player, Rooms[player.Last_Location])
 				} else {
-					say("You are unable to retrace your steps")
+					say(command, "You are unable to retrace your steps")
 				}
 			} else {
 				//Not a compass direction, user may have typed a room name
@@ -410,20 +411,21 @@ func (p AdventureBot) DeferredAction(command *SlashCommand) {
 
 				if len(candidates) == 0 {
 					if StringInSlice(nouns[0], Rooms[player.Location].Names) {
-						say(fmt.Sprintf("You are already in the %s.", nouns[0]))
+						say(command, fmt.Sprintf("You are already in the %s.", nouns[0]))
 					} else {
-						say(fmt.Sprintf("You can not make it to the %s from here.", nouns[0]))
+						say(command, fmt.Sprintf("You can not make it to the %s from here.", nouns[0]))
 					}
+					//TODO: Handle other -somethings-
 				} else if len(candidates) == 1 {
-					player = move(player, candidates[0])
+					player = move(command, player, candidates[0])
 				} else {
 					if len(adjectives) == 0 {
-						say(fmt.Sprintf("There is more than one type of %s nearby!", nouns[0]))
+						say(command, fmt.Sprintf("There is more than one type of %s nearby!", nouns[0]))
 					} else {
 						for _, r := range candidates {
 							if StringInSlice(adjectives[0], r.Adjectives) {
 								//the user typed in a valid adjacent noun
-								player = move(player, r)
+								player = move(command, player, r)
 								break
 							}
 						}
@@ -433,52 +435,57 @@ func (p AdventureBot) DeferredAction(command *SlashCommand) {
 
 		} else {
 			//user didn't tell me where to go
-			say("I do not know where you are trying to " + verbs[0] + ".")
+			say(command, "I do not know where you are trying to "+verbs[0]+".")
 		}
 
 		//check for current room
 		//fmt.Println(Rooms[player.Location])
 		/*
-				say(fmt.Sprintf("%s is already in the %s", player.Name, player.Location))
+				say(command, fmt.Sprintf("%s is already in the %s", player.Name, player.Location))
 				target = ""
 			}
 			//check for adjacent rooms
 			//Can't go there
 			if target != "" {
-				say(fmt.Sprintf("%s can not %s there", player.Name, input[0]))
+				say(command, fmt.Sprintf("%s can not %s there", player.Name, input[0]))
 			}
 		*/
 	} else if action != "" {
 		var candidates []Widget
 
-		for _, w := range Rooms[player.Location].Widgets {
-			//find all widgets in the room
-			//fmt.Print("Looking at " + r)
-			if _, exist := Widgets[w]; exist {
-				//does the actual entry exist?
-				//fmt.Println(" Found!")
-				if StringInSlice(action, Widgets[w].Actions) {
-					//the user typed in an action in this widget
-					candidates = append(candidates, Widgets[w])
+		//TODO: Handle more than widgets
+		if len(nouns) > 0 {
+			for _, w := range Rooms[player.Location].Widgets {
+				//find all widgets in the room
+				//fmt.Print("Looking at " + r)
+				if _, exist := Widgets[w]; exist {
+					//does the actual entry exist?
+					//fmt.Println(" Found!")
+					if StringInSlice(nouns[0], Widgets[w].Names) {
+						//the user typed in an action in this widget
+						candidates = append(candidates, Widgets[w])
+					}
 				}
 			}
-		}
-		if len(candidates) == 0 {
-			if len(input) == 1 {
-				say("You can't " + Actions[action].Commands[0] + " here")
+			if len(candidates) == 0 {
+				say(command, "You can't "+Actions[action].Commands[0]+" that here")
+			} else if len(candidates) == 1 {
+				if StringInSlice(action, candidates[0].Actions) {
+					doAction(command, player, Actions[action])
+				} else {
+					say(command, "You can't "+Actions[action].Commands[0]+" the "+candidates[0].Display_Name)
+				}
 			} else {
-				say("You can't " + Actions[action].Commands[0] + " that here")
+				//TODO: Handle noun conflicts with adjectives
+				say(command, "I can't handles this yet")
 			}
-		} else if len(candidates) == 1 {
-			doAction(player, Actions[action])
 		} else {
-			//TODO: Handle others
-			say("I can't handles this yet")
+			say(command, "I don't know what you are trying to "+Actions[action].Commands[0])
 		}
 
 		//can the verb be done with the noun
 		/*if len(nouns) == 0 {
-			say("I don't know what to " + action)
+			say(command, "I don't know what to " + action)
 		} else {
 			var ac_candidates []string
 			var candidates []Widget
@@ -497,18 +504,18 @@ func (p AdventureBot) DeferredAction(command *SlashCommand) {
 				}
 			}
 			if len(candidates) == 0 {
-				say("I don't see a " + nouns[0] + " nearby.")
+				say(command, "I don't see a " + nouns[0] + " nearby.")
 			} else if len(candidates) == 1 {
 				if
 				//sayDesc_A(candidates[0])
 			} else {
 				if len(adjectives) == 0 {
-					say(fmt.Sprintf("There is more than one type of %s nearby!", nouns[0]))
+					say(command, fmt.Sprintf("There is more than one type of %s nearby!", nouns[0]))
 				} else {
 					for _, w := range candidates {
 						if StringInSlice(adjectives[0], w.Adjectives) {
 							//the user typed in a valid widget noun
-							sayDesc_W(w)
+							sayDesc_W(command, w)
 							break
 						}
 					}
@@ -517,7 +524,7 @@ func (p AdventureBot) DeferredAction(command *SlashCommand) {
 		}*/
 
 	} else {
-		say(fmt.Sprintf("I do not understand what %s is trying to say", command.User_Name))
+		say(command, fmt.Sprintf("I do not understand what %s is trying to say", command.User_Name))
 	}
 
 	//Lock
@@ -525,40 +532,45 @@ func (p AdventureBot) DeferredAction(command *SlashCommand) {
 	//Unlock
 }
 
-func move(p Player, r Room) Player {
+func move(command *SlashCommand, p Player, r Room) Player {
 	p.Last_Location = p.Location
 	p.Location = r.ID
-	//say(fmt.Sprintf("%s is now in the %s", player.Name, Rooms[player.Location].Names[0]))
-	sayDesc_R(r)
+	//say(command, fmt.Sprintf("%s is now in the %s", player.Name, Rooms[player.Location].Names[0]))
+	sayDesc_R(command, r)
 	return p
 }
 
-func sayDesc_R(r Room) {
-	say(r.Display_Name + "\n______________________________________________\n" + r.Description)
+func sayDesc_R(command *SlashCommand, r Room) {
+	say(command, r.Display_Name+"\n______________________________________________\n"+r.Description)
 }
 
-func sayDesc_W(w Widget) {
-	say(w.Description)
+func sayDesc_W(command *SlashCommand, w Widget) {
+	say(command, w.Description)
 }
 
-func sayDesc_I(i Item) {
-	say(i.Description)
+func sayDesc_I(command *SlashCommand, i Item) {
+	say(command, i.Description)
 }
 
-func doAction(p Player, a Action) {
+func doAction(command *SlashCommand, p Player, a Action) {
 	//TODO: requirements
-	say(a.Result)
+	say(command, a.Result)
 	if a.Teleport != "" {
 		if _, exist := Rooms[a.Teleport]; exist {
-			move(p, Rooms[a.Teleport])
+			move(command, p, Rooms[a.Teleport])
 		}
 	}
 	//TODO: Gives
 }
 
-func say(text string) {
+func say(command *SlashCommand, text string) {
 	response := new(IncomingWebhook)
-	response.Channel = "C02HR18H4"
+	response.Domain = command.Team_Domain
+	response.Channel = command.Channel_ID
+
+	fmt.Println(command.Team_Domain)
+	fmt.Println(command.Channel_ID)
+
 	response.Username = "Adventure Bot"
 	response.Text = text
 	fmt.Println(text)
