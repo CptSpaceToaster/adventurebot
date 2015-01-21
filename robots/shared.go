@@ -45,8 +45,6 @@ func MakeIncomingWebhookCall(payload *IncomingWebhook) error {
 	n := -1
 	for index, c := range Config.Credentials {
 		if payload.Domain == c.Domain {
-			fmt.Print("Found " + c.Domain + " ")
-			fmt.Println(index)
 			n = index
 		}
 	}

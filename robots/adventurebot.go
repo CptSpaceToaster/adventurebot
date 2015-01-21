@@ -171,14 +171,15 @@ func getDirNames(dirloc string) (names []string) {
 	return
 }
 
-func RegisterPlayer(name string) (player Player) {
-	//TODO: Handle same names from unique servers
+func RegisterPlayer(name string, id string) (player Player) {
+	//TODO: Handle same names from unique servers - I think this is done
 	player.Name = name
+	player.ID = id
 	Nouns[strings.ToLower(name)] = append(Nouns[strings.ToLower(name)], name)
 	player.Location = "beach3"
 	player.Last_Location = "beach3"
 	//Lock
-	Players[player.Name] = player
+	Players[player.ID] = player
 	//Unlock
 	fmt.Println("Registered " + name)
 	return player
@@ -196,11 +197,11 @@ func (p AdventureBot) DeferredAction(command *SlashCommand) {
 			return
 		}
 	*/
-	if _, exist := Players[command.User_Name]; !exist {
-		RegisterPlayer(command.User_Name)
+	if _, exist := Players[command.User_ID]; !exist {
+		RegisterPlayer(command.User_Name, command.User_ID)
 	}
 	//RLock
-	player := Players[command.User_Name]
+	player := Players[command.User_ID]
 	//RUnlock
 
 	//remove any question marks, split strings by spaces
@@ -528,7 +529,7 @@ func (p AdventureBot) DeferredAction(command *SlashCommand) {
 	}
 
 	//Lock
-	Players[player.Name] = player //Update the instance of the player in Players
+	Players[player.ID] = player //Update the instance of the player in Players
 	//Unlock
 }
 
@@ -541,7 +542,7 @@ func move(command *SlashCommand, p Player, r Room) Player {
 }
 
 func sayDesc_R(command *SlashCommand, r Room) {
-	say(command, r.Display_Name+"\n______________________________________________\n"+r.Description)
+	say(command, command.User_Name+" is in the "+r.Display_Name+"\n______________________________________________\n"+r.Description)
 }
 
 func sayDesc_W(command *SlashCommand, w Widget) {
@@ -567,10 +568,6 @@ func say(command *SlashCommand, text string) {
 	response := new(IncomingWebhook)
 	response.Domain = command.Team_Domain
 	response.Channel = command.Channel_ID
-
-	fmt.Println(command.Team_Domain)
-	fmt.Println(command.Channel_ID)
-
 	response.Username = "Adventure Bot"
 	response.Text = text
 	fmt.Println(text)

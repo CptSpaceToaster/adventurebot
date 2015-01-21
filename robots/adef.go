@@ -2,6 +2,7 @@ package robots
 
 type Player struct {
 	Name          string   `json:"name"`
+	ID            string   `json:"id"`
 	Location      string   `json:"location"`
 	Last_Location string   `json:"last_location"`
 	Inventory     []string `json:"inventory"`
