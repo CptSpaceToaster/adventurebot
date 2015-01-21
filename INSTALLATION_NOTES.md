@@ -19,10 +19,14 @@ Pull a tarball from [Go's download page](http://golang.org/dl/) and follow their
 `wget golang.org/dl/go$VERSION.$OS-$ARCH.tar.gz`  
 `sudo tar -C /usr/local -xzf go$VERSION.$OS-$ARCH.tar.gz`  
 `export PATH=$PATH:/usr/local/go/bin` - You probably want this in your .profile  
+
 Make sure to create a directory to store your go-projects, **and** set the `$GOPATH` to the location of the the directory you create  
+
 `mkdir ~/go-proj-dir`  
 `export GOPATH=~/go-proj-dir` - Probably want this in your .profile as well  
+
 Check to see if the tool exists!  
+
 `go version`  
 `> go version go1.3.3 linux/amd64`
 

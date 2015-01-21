@@ -19,15 +19,26 @@ Create a config file (config.json) in `$GOPATH/bin` with the following format:
 
 ```
 {
-    "domain": "{YOUR_SLACK_DOMAIN}",
     "port": {PORT_FOR_BOT},
-    "token": "{YOUR_SLACK_INCOMING_WEBHOOK_TOKEN}"
+    "credentials": [
+        {
+            "domain": "{YOUR_FIRST_SLACK_DOMAIN}",
+            "token": "{YOUR_FIRST_SLACK_INCOMING_WEBHOOK_TOKEN}"
+        },
+        {
+            "domain": "{YOUR_SECOND_SLACK_DOMAIN}",
+            "token": "{YOUR_SECOND_SLACK_INCOMING_WEBHOOK_TOKEN}"
+        }
+    ]
 }
 ```
 
-Make sure you have [Incoming Webhooks](https://slack.com/services/new/incoming-webhook) enabled and you are using that integration token for your config.
+Adventurebot will respond to an [Outgoing Webhook](https://slack.com/services/new/outgoing-webhook). (hard set for patterns that begin with question-mark's at the moment) and it will reply using an [Incoming Webhooks](https://slack.com/services/new/incoming-webhook) 
 
-Adventurebot will respond to an [Outgoing Webhook](https://slack.com/services/new/outgoing-webhook). (hard set for patterns that begin with question-mark's at the moment)
+You'll need to find your [Incoming Webhook Token](https://slack.com/services/new/incoming-webhook) and pair each slack domain with its token if you want Adventurebot to respond.
+
+Note, adventurebot will only pay attention to commands that begin with a question-mark!  That means your [Outgoing Webhook](https://slack.com/services/new/outgoing-webhook) **must** have this option set properly.
+![This is currently mandatory](http://i.imgur.com/LRZkO4K.png)
 
 TODO: Lots
 

@@ -13,7 +13,7 @@ import (
 var Players = make(map[string]Player)
 var Items = make(map[string]Item)
 var Rooms = make(map[string]Room)
-var Widgets = make(map[string]Widget) // Note, widgets are basically just items that can't be picked up.:wq
+var Widgets = make(map[string]Widget) // Note, widgets are basically just items that can't be picked up.
 var Actions = make(map[string]Action)
 var Requirements = make(map[string]Requirement)
 
