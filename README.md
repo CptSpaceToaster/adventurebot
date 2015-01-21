@@ -19,9 +19,17 @@ Create a config file (config.json) in `$GOPATH/bin` with the following format:
 
 ```
 {
-    "domain": "{YOUR_SLACK_DOMAIN}",
     "port": {PORT_FOR_BOT},
-    "token": "{YOUR_SLACK_INCOMING_WEBHOOK_TOKEN}"
+    "credentials": [
+        {
+            "domain": "{YOUR_FIRST_SLACK_DOMAIN}",
+            "token": "{YOUR_FIRST_SLACK_INCOMING_WEBHOOK_TOKEN}"
+        },
+        {
+            "domain": "{YOUR_SECOND_SLACK_DOMAIN}",
+            "token": "{YOUR_SECOND_SLACK_INCOMING_WEBHOOK_TOKEN}"
+        }
+    ]
 }
 ```
 
