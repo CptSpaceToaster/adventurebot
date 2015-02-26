@@ -279,7 +279,9 @@ func (p AdventureBot) DeferredAction(command *SlashCommand) {
 	}
 	//fmt.Println(action)
 
-	if action == "look" {
+	if action == "help" {
+		doAction(command, player, Actions["help"])
+	} else if action == "look" {
 		if len(nouns) == 0 && len(input) == 1 {
 			sayDesc_R(command, Rooms[player.Location])
 		} else if len(nouns) > 0 {
